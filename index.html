@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="google-site-verification" content="HoWofmErOOKMSn8dHeXvBTb5cGoEBEB1rQ7Y3CrUYgY" />
+<meta name="google-site-verification" content="HoWofmErOOKMSn8dHeXvBTb5cGoEBEB1rQ7Y3CrUYgY" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <meta name="color-scheme" content="light dark" />
     <link rel="icon" href="data:," />
@@ -418,12 +418,12 @@
             <div class="step">
               <span class="num">STEP 1</span>
               <h3>Add your images</h3>
-              <p>Drag and drop JPG, PNG or WebP files onto the box above, or tap it to browse. You can add a whole batch at once and remove any file you change your mind about.</p>
+              <p>Drag and drop JPG, PNG or WebP files onto the box above, or tap it to browse. You can add a <a href="#/batch-compress-photos">whole batch at once</a> and remove any file you change your mind about.</p>
             </div>
             <div class="step">
               <span class="num">STEP 2</span>
               <h3>Choose your settings</h3>
-              <p>Set the quality, pick an output format, and optionally cap the width and height. Every image in the list is re-compressed instantly whenever you change a setting.</p>
+              <p>Set the <a href="#/how-much-quality-loss-is-acceptable">quality</a>, pick an output format, and optionally <a href="#/resize-vs-compress">cap the width and height</a>. Every image in the list is re-compressed instantly whenever you change a setting.</p>
             </div>
             <div class="step">
               <span class="num">STEP 3</span>
@@ -435,7 +435,7 @@
 
         <section class="block">
           <h2>Why smaller images matter</h2>
-          <p class="intro">Image files are usually the heaviest part of a web page, an email or a shared album. A phone photo can weigh 4–8 MB straight from the camera, yet most screens display it at a fraction of its original size. Compressing it first means pages load faster, uploads finish sooner, storage lasts longer, and visitors on slow connections are not left staring at a blank screen. The guides below explain the ideas behind the tool so you can make good choices for every image, not just the ones you compress here.</p>
+          <p class="intro">Image files are usually the heaviest part of a web page, an email or a shared album. A phone photo can weigh 4–8 MB straight from the camera, yet most screens display it at a fraction of its original size. Compressing it first means pages load faster, uploads finish sooner, storage lasts longer, and visitors on slow connections are not left staring at a blank screen. If you run a website, it pays to understand <a href="#/why-large-images-slow-down-websites">why large images slow down your website</a> and how image weight feeds into your <a href="#/image-compression-and-core-web-vitals">Core Web Vitals</a> scores. The guides below explain the ideas behind the tool so you can make good choices for every image, not just the ones you compress here.</p>
         </section>
 
         <section class="block">
@@ -697,6 +697,544 @@
         </article>
       </div>
 
+      <!-- ==================== ARTICLE 6 ==================== -->
+      <div class="page" id="page-why-large-images-slow-down-websites">
+        <article class="prose">
+          <a class="backlink" href="#/articles">← All articles</a>
+          <h1>Why Large Images Slow Down Your Website</h1>
+          <p class="standfirst">A web page cannot appear until its bytes arrive. Images account for most of those bytes on a typical page, so an unprepared photo quietly taxes every visitor — and mobile visitors pay double.</p>
+          <p class="meta-line">ImageCompressorHub Guides · About 6 minutes to read</p>
+
+          <h2>Every byte has to travel</h2>
+          <p>When someone opens your page, their browser requests the HTML, then works through everything the page needs: stylesheets, scripts, fonts and images. Each file is data that must physically travel across a network before it can be shown. Text is tiny — the words you are reading now weigh a few kilobytes. Images are not. A single unedited phone photo can be 4 MB, which is more than the entire rest of a typical page combined, several times over.</p>
+          <p>Industry measurements consistently find that images make up roughly half of the average web page's total weight, and on image-led pages — shops, portfolios, recipe and travel sites — the share is far higher. That means when a page feels slow, the odds are strong that images, not code, are the reason.</p>
+
+          <h2>The maths of a slow connection</h2>
+          <p>Download time is simply file size divided by connection speed, and real-world speeds are much lower than the numbers on broadband adverts. A visitor on a mid-range mobile connection might effectively receive around 1–2 MB per second in good conditions, and far less on a train, in a rural area or on a congested network. At 1 MB per second, a page carrying 6 MB of images needs at least six seconds just for the pictures — before rendering, before scripts, before anything goes wrong. Research on visitor behaviour is blunt about what happens during those seconds: a large share of people simply leave, and they rarely come back to try again.</p>
+          <p>There is a second, quieter cost. Mobile data is not free everywhere, and a heavy page spends your visitors' money and battery to download detail their screen cannot even display. A 4000-pixel-wide photo shown in a 400-pixel-wide phone viewport delivers ten times the data the display can use.</p>
+
+          <h2>Big images delay more than themselves</h2>
+          <p>Oversized images do not just arrive late; they hold up everything around them. Browsers give priority to what they judge important, and a huge hero image competes for bandwidth with the fonts and styles the page needs to render at all. If the browser does not know an image's dimensions in advance, the page text loads first and then jumps around as each picture lands and pushes content down the screen — the layout instability measured by Cumulative Layout Shift. And because the largest visible element on most pages is an image, that image's arrival time effectively <em>is</em> the page's loading score, a connection we explore in our guide to <a href="#/image-compression-and-core-web-vitals">image compression and Core Web Vitals</a>.</p>
+
+          <h2>Why it keeps happening</h2>
+          <p>Almost nobody sets out to publish a 5 MB photo. It happens because modern cameras and design tools export generous files by default, content systems accept whatever is uploaded, and on a fast office connection the result looks fine. The page is only ever tested on the connection of the person who built it. The slowness is real, but it is invisible to the one person who could fix it — which is why checking your actual image weights, rather than trusting how the page feels on your own machine, matters so much.</p>
+
+          <h2>How to check your own pages</h2>
+          <p>You do not need specialist tools to get a first answer. Open your page in a browser, open the developer tools' network panel, reload, and sort by size: the largest entries will almost certainly be images. Free speed tests such as PageSpeed Insights go further and name the specific images that are oversized for their display slots, along with the savings available. Treat any single content image over about 200 KB, or a page whose images total more than roughly 1 MB, as a candidate for attention.</p>
+
+          <h2>The fix is preparation, not hope</h2>
+          <p>The remedy is the workflow in our guide to <a href="#/compress-images-for-websites">compressing images for a website</a>: resize each image to the size it will actually be displayed (at most twice that, for sharp screens), use an efficient format such as WebP or JPEG for photographs, and compress at a sensible quality. Understand the difference between the two levers and you will reach for the right one — our explainer on <a href="#/resize-vs-compress">resize vs compress</a> breaks it down. A page that sheds 80% of its image weight does not load a little faster; it loads like a different website, especially for the mobile visitors who were struggling most.</p>
+
+          <div class="callout"><p><strong>Start with your heaviest page:</strong> run its images through the <a href="#/">compressor</a> at quality 80 with a sensible maximum width, re-upload, and reload the page on your phone with Wi-Fi off. The difference is usually obvious within seconds.</p></div>
+        </article>
+      </div>
+
+      <!-- ==================== ARTICLE 7 ==================== -->
+      <div class="page" id="page-image-sizes-for-social-media">
+        <article class="prose">
+          <a class="backlink" href="#/articles">← All articles</a>
+          <h1>Best Image Sizes for Social Media</h1>
+          <p class="standfirst">Every platform displays images at its own sizes and recompresses whatever you upload. Post at the dimensions each platform actually uses, and your photos stay sharp instead of being mangled twice.</p>
+          <p class="meta-line">ImageCompressorHub Guides · About 6 minutes to read</p>
+
+          <h2>Why uploading the original is a mistake</h2>
+          <p>It feels logical to upload your best, biggest photo and let the platform sort it out. In practice, platforms sort it out aggressively: they resize to their own dimensions and compress to their own quality targets, and their automated pass is rarely kind to fine detail, gradients or text. A photo that leaves your phone at 5 MB may be served to your followers at a tenth of that, with visible softening. You cannot stop platforms recompressing — but you can hand them a file that is already at (or near) the size they will display, compressed carefully by you rather than hurriedly by them. The closer your upload is to the final display size, the less damage their processing does.</p>
+
+          <h2>The sizes that matter</h2>
+          <p>Platforms adjust these numbers from time to time, but the following dimensions are the widely used display sizes and a reliable working target. When in doubt, the shape (aspect ratio) matters more than the exact pixel count.</p>
+          <table>
+            <thead>
+              <tr><th>Platform &amp; placement</th><th>Recommended size</th><th>Shape</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Instagram feed (portrait)</td><td>1080 × 1350 px</td><td>4:5</td></tr>
+              <tr><td>Instagram feed (square)</td><td>1080 × 1080 px</td><td>1:1</td></tr>
+              <tr><td>Instagram / Facebook story &amp; reels cover</td><td>1080 × 1920 px</td><td>9:16</td></tr>
+              <tr><td>Facebook feed post</td><td>1200 × 630 px (link) or 1080 × 1080 px</td><td>1.91:1 or 1:1</td></tr>
+              <tr><td>X (Twitter) post</td><td>1600 × 900 px</td><td>16:9</td></tr>
+              <tr><td>LinkedIn post</td><td>1200 × 627 px</td><td>1.91:1</td></tr>
+              <tr><td>YouTube thumbnail</td><td>1280 × 720 px</td><td>16:9</td></tr>
+              <tr><td>Pinterest pin</td><td>1000 × 1500 px</td><td>2:3</td></tr>
+              <tr><td>Profile photos (most platforms)</td><td>400 × 400 px or larger</td><td>1:1, shown as a circle</td></tr>
+            </tbody>
+          </table>
+          <p>Two patterns are worth noticing. First, vertical images (4:5, 2:3, 9:16) occupy more of a phone screen than landscape ones, which is why platforms and successful posters favour them. Second, profile pictures are displayed in a circle almost everywhere, so keep faces and logos away from the corners.</p>
+
+          <h2>Format and file size for uploads</h2>
+          <p>For photographs, upload JPEG — every platform accepts it, and its compression behaves predictably. Use PNG only when the image contains text, a logo or sharp graphics, because platforms' JPEG conversion of text produces exactly the fuzzy halos described in our <a href="#/jpg-vs-png-vs-webp">format comparison</a>. Some platforms accept WebP and handle it well; others convert or reject it, so JPEG remains the safe universal choice for posting. As for file size, there is no prize for uploading 8 MB: once you have resized to the platform's dimensions and saved at quality 80–85, most social images land between 150 KB and 600 KB, upload in a moment, and survive platform processing in far better shape than the giant original did.</p>
+
+          <h2>A simple routine for every post</h2>
+          <ol>
+            <li><strong>Crop to the platform's shape first</strong> — decide what the platform will cut off before it does it for you.</li>
+            <li><strong>Resize to the recommended width</strong> (1080 px covers most feeds) using the maximum width setting in the <a href="#/">compressor</a>.</li>
+            <li><strong>Compress at quality 80–85</strong> and keep the original untouched in your library.</li>
+            <li><strong>Check text at full size.</strong> If your image contains words, zoom in: they should be crisp, not fringed with noise.</li>
+          </ol>
+          <p>The same routine doubles as good storage hygiene. Keeping a folder of platform-ready copies means you never scroll through camera originals hunting for the one you posted, and reposting to a second platform takes seconds. Our guide to <a href="#/reduce-photo-file-size">reducing photo file size on any device</a> covers the same resizing skills for other destinations, from email to documents.</p>
+
+          <div class="callout"><p><strong>One habit to avoid:</strong> screenshotting a photo to make it "smaller" for posting. A screenshot throws away most of the resolution and bakes in whatever was on your screen — resize the real file instead, and it will look better at a smaller size.</p></div>
+        </article>
+      </div>
+
+      <!-- ==================== ARTICLE 8 ==================== -->
+      <div class="page" id="page-dpi-and-resolution-explained">
+        <article class="prose">
+          <a class="backlink" href="#/articles">← All articles</a>
+          <h1>Image DPI and Resolution Explained Simply</h1>
+          <p class="standfirst">Few topics in imaging generate more confusion — and more pointless file bloat — than DPI. The good news: for anything shown on a screen, DPI is almost entirely a red herring. Here is what actually matters.</p>
+          <p class="meta-line">ImageCompressorHub Guides · About 6 minutes to read</p>
+
+          <h2>Start with pixels: the only real resolution</h2>
+          <p>A digital image is a grid of pixels, and its true resolution is simply how many: an image that is 3000 pixels wide and 2000 pixels tall contains six million pixels (6 megapixels), however it is labelled. Pixels are the information. Everything else — DPI, PPI, print size in centimetres — is a description of how those pixels might be spread out, not a property of the image itself. Two files with identical pixel dimensions contain identical image data, even if one claims to be 72 DPI and the other 300 DPI.</p>
+
+          <h2>What DPI actually is</h2>
+          <p>DPI stands for dots per inch, a printing term: how many dots of ink a printer lays down across one inch of paper. Its screen-era cousin PPI (pixels per inch) describes how densely pixels are packed on a display. In an image file, the DPI value is just a small piece of metadata — a suggestion that says "if you print me, spread my pixels at this density." Change that number from 72 to 300 and you have changed nothing about the image: same pixels, same quality, essentially the same file size. Print software reads the suggestion and calculates a default print size from it: 3000 pixels at 300 DPI prints 10 inches wide; the same 3000 pixels at 72 DPI would default to nearly 42 inches wide — printed very coarsely, because the pixels are spread thin.</p>
+
+          <h2>The 72 vs 300 myth, and why it refuses to die</h2>
+          <p>The myth says web images should be 72 DPI and print images 300 DPI, as if the number itself changed quality. It survives because the underlying truth is real: print needs far more pixels per inch of output than screens do, because paper is viewed closely and shows detail screens cannot. But the requirement is about total pixels relative to printed size, not about the metadata tag. A printer asking for "300 DPI at A4" is really asking for roughly 3500 × 2500 pixels. Send a 3500-pixel-wide image tagged 72 DPI and it prints beautifully; send an 800-pixel-wide image tagged 300 DPI and it prints small or blurry. When a print shop states a DPI requirement, translate it: required pixels = inches × DPI. That is the number to satisfy.</p>
+
+          <h2>What matters on screens: matching pixels to the display</h2>
+          <p>Screens ignore DPI metadata entirely. A browser displays an image at the size your page specifies, using the pixels available. What matters is the relationship between the image's pixel width and the space it fills: an image shown 800 pixels wide wants about 800 pixels of data — or up to 1600 on high-density "Retina" displays, which genuinely render extra sharpness from the extra pixels. Supply far more than that and you are shipping weight nobody can see, which is exactly the problem our guide to <a href="#/resize-vs-compress">resize vs compress</a> helps you untangle. Supply far fewer and the browser stretches the image, and it looks soft no matter what any metadata claims.</p>
+
+          <h2>Practical rules you can actually use</h2>
+          <ul>
+            <li><strong>For the web and social media:</strong> think only in pixels. Resize to the display width (times two for retina), ignore DPI completely.</li>
+            <li><strong>For print:</strong> work backwards from the physical size. A 6 × 4 inch photo print at 300 DPI needs 1800 × 1200 pixels; a full A4 page needs about 3500 × 2500.</li>
+            <li><strong>When a form demands "300 DPI":</strong> check whether it also states a physical size, then supply the matching pixel count. If it truly only checks the tag, any image editor can set the metadata without altering the picture.</li>
+            <li><strong>Scanning documents:</strong> here DPI is a genuine setting, because the scanner creates the pixels. 300 DPI is the standard for documents you may print again; 150–200 is fine for screen-only archives.</li>
+          </ul>
+          <p>Notice what is absent from that list: any situation where inflating a small image's DPI or pixel count adds real detail. Upscaling invents pixels by interpolation; it cannot recover information that was never captured. If you need a bigger print than your pixels allow, the honest options are printing smaller, standing further back, or reshooting.</p>
+
+          <div class="callout"><p><strong>The one-sentence version:</strong> pixels are the image; DPI is just a printing instruction attached to it. Manage your pixel dimensions with the <a href="#/">compressor's</a> maximum width and height settings, and DPI will take care of itself.</p></div>
+        </article>
+      </div>
+
+      <!-- ==================== ARTICLE 9 ==================== -->
+      <div class="page" id="page-compress-screenshots">
+        <article class="prose">
+          <a class="backlink" href="#/articles">← All articles</a>
+          <h1>How to Compress Screenshots Without Making Text Blurry</h1>
+          <p class="standfirst">Screenshots are the images most often ruined by compression — and the easiest to keep perfect, once you know why they suffer. It comes down to one mismatch: screenshots are graphics, and most compressors treat them as photographs.</p>
+          <p class="meta-line">ImageCompressorHub Guides · About 6 minutes to read</p>
+
+          <h2>Why screenshots are a special case</h2>
+          <p>A photograph is forgiving. Its content is gradual — skin, sky, foliage — and small inaccuracies blend in unnoticed. A screenshot is the opposite: razor-sharp edges where black text meets a white background, flat areas of exactly one colour, and thin one-pixel lines in windows and tables. Every one of those features is precisely what lossy photographic compression handles worst. JPEG divides the image into blocks and approximates fine detail; around text, that approximation shows up as grey smudges, coloured fringing and a dirty halo that makes words look out of focus. If you have ever seen a support article whose screenshots were barely readable, you have seen this mistake.</p>
+
+          <h2>Rule one: keep screenshots in PNG</h2>
+          <p>PNG is lossless, which means the text in your screenshot stays bit-for-bit exact — and because screenshots are full of flat colour and repeated patterns, PNG compresses them surprisingly well. A typical full-screen screenshot saved as PNG is often 200 KB to 1 MB, while the same shot as a high-quality JPEG is barely smaller and visibly worse. Our <a href="#/jpg-vs-png-vs-webp">format comparison</a> explains the underlying trade-off, and our guide to <a href="#/how-image-compression-works">how compression works</a> explains why flat, repetitive content is lossless compression's favourite food. The practical takeaway: in the <a href="#/">compressor</a>, add your screenshot and keep the output format as PNG — then shrink it with dimensions, not quality, since PNG has no quality setting to lower.</p>
+
+          <h2>Rule two: capture less, then resize carefully</h2>
+          <p>The biggest screenshot files are full-screen captures of high-resolution displays — a 4K or Retina screen produces an image 3840 pixels wide or more, most of it irrelevant to what you are showing. Two habits fix this:</p>
+          <ul>
+            <li><strong>Capture a region, not the screen.</strong> Every operating system has a region capture shortcut. Cropping to the relevant window often removes 70% of the pixels before you start.</li>
+            <li><strong>Resize to the display width.</strong> A screenshot destined for a help article or document will be shown at perhaps 800–1200 pixels wide. Set that as the maximum width and the file shrinks in proportion — while text at the final size stays sharp, because it was rendered from clean original pixels.</li>
+          </ul>
+          <p>One caution: avoid resizing a screenshot more than once, and avoid odd scaling percentages when the screenshot will be viewed at 100%. Each resample softens edges slightly; a single, deliberate resize from the original is the clean approach.</p>
+
+          <h2>Rule three: reduce colours before you reduce anything else</h2>
+          <p>Many screenshots use a tiny palette — interface greys, one accent colour, black text — even though the file stores millions of possible colours. Reducing a PNG to an indexed palette of 256 colours (sometimes called PNG-8) can cut its size dramatically with no visible change, because the palette still contains every colour the image actually uses. This works brilliantly for interface shots, diagrams and settings windows. It works badly for screenshots that contain a photograph or a video frame, where the limited palette produces banding — for those, keep the full-colour PNG and rely on resizing.</p>
+
+          <h2>When a screenshot must be a JPEG anyway</h2>
+          <p>Some systems — certain form uploads, older forums, a few chat tools — accept only JPEG. If you are forced down that road: resize first so the text is large relative to the final image, use the highest quality you can afford (90 or above), and inspect the result at 100% zoom, reading actual words rather than glancing at the whole picture. Text that survives at 100% will survive anywhere. And if the screenshot's whole purpose is to be read — an error message, a settings panel, a receipt — consider whether a smaller crop at full quality serves the reader better than a full screen squeezed harder.</p>
+
+          <h2>A note on screenshots with transparency</h2>
+          <p>Occasionally a screenshot or interface mock-up carries a transparent background — a captured window with rounded corners, for instance. Transparency rules out JPEG entirely and pushes file sizes up for reasons we cover in our article on <a href="#/transparent-backgrounds-and-png-size">transparent backgrounds and PNG size</a>. The short version: keep the PNG, trim away empty transparent margins, and resize to the exact display size, because with transparency those are the only levers you have.</p>
+
+          <div class="callout"><p><strong>The screenshot checklist:</strong> capture a region, keep PNG, resize once to display width, reduce colours if the shot is all interface — and never let a quality slider near your text.</p></div>
+        </article>
+      </div>
+
+      <!-- ==================== ARTICLE 10 ==================== -->
+      <div class="page" id="page-product-photos-for-online-shop">
+        <article class="prose">
+          <a class="backlink" href="#/articles">← All articles</a>
+          <h1>Preparing Product Photos for an Online Shop</h1>
+          <p class="standfirst">Product photos do two jobs at once: they sell the item, and they decide how fast your shop loads. Good preparation gets both right — crisp, zoomable images that still weigh less than a typical email attachment.</p>
+          <p class="meta-line">ImageCompressorHub Guides · About 7 minutes to read</p>
+
+          <h2>Start from what marketplaces and shoppers demand</h2>
+          <p>Every sales channel has its own rules, but they converge on the same shape: a square or near-square main image, large enough to zoom, on a clean background. Major marketplaces typically require the longest side to be at least 1000–2000 pixels for their zoom feature to work, and they will compress anything you upload to their own standards. Your own shop gives you more control, but shoppers' expectations were set by the marketplaces: they expect to tap, zoom, and inspect stitching, texture and labels. Preparing for that expectation — rather than for the thumbnail size — is the mindset that produces good product images.</p>
+
+          <h2>Dimensions: big enough to zoom, no bigger</h2>
+          <p>A practical standard is 2000 pixels on the longest side for the main image: enough for a satisfying zoom on desktop and phone, without the dead weight of a full camera file. Gallery and thumbnail versions can be far smaller — 800 pixels is generous — and many shop platforms generate those automatically from the main image. What you should never do is upload the 6000-pixel original and trust the platform to sort it out: its automated resize will be fine, but its automated compression may not be, and on your own hosting you may end up serving the giant file directly. Decide the size yourself, as our <a href="#/compress-images-for-websites">website compression guide</a> recommends for all web images.</p>
+
+          <h2>Backgrounds: white, lifestyle, or transparent</h2>
+          <p>Most marketplaces require or strongly favour a pure white background for the main image: it looks uniform across a search results page and keeps attention on the product. Lifestyle shots — the product in use, in a real setting — belong later in the gallery, where they answer "what is it like to own this?" rather than "what exactly is it?" Transparent backgrounds are the flexible third option, letting one cut-out image sit on any page design, but transparency forces PNG and its heavier files; our article on <a href="#/transparent-backgrounds-and-png-size">why transparent PNGs get so big</a> explains the cost and the alternatives, including WebP with transparency at a fraction of the size.</p>
+          <p>Whatever you choose, be consistent. A shop where every main photo shares the same background, lighting and framing looks deliberate and trustworthy; a mixture of supplier shots, phone snaps and cut-outs looks like a market stall. Consistency is also what makes the next step possible.</p>
+
+          <h2>Format, quality and file size targets</h2>
+          <p>For opaque product photos, JPEG or WebP at quality 80–85 is the sweet spot — products are exactly the images shoppers zoom into, so stay at the higher end of the usual range and check textured areas (fabric, wood grain, brushed metal) at full size. Working targets: main images under 300–400 KB, gallery images under 150 KB. A whole product page — main image plus five gallery shots — should ideally stay under about 1.5 MB of images, because product pages are where slow loading most directly costs sales: the shopper comparing three tabs keeps the one that responds.</p>
+
+          <h2>Batch the boring part</h2>
+          <p>A catalogue rarely has one product; it has fifty, each with four photos. Processing them one at a time is how preparation gets skipped. Instead, settle your recipe once — 2000 px longest side, JPEG or WebP, quality 82, consistent naming — and run the whole set through in one pass, as described in our guide to <a href="#/batch-compress-photos">batch-compressing many photos at once</a>. In the <a href="#/">compressor</a> that means one drag of the whole folder, one set of settings, and a Download All at the end. Name the outputs after the product and angle (for example, "linen-shirt-blue-front.jpg") rather than the camera's file names — descriptive names help your shop's organisation and your <a href="#/image-seo-guide">image SEO</a> at the same time.</p>
+
+          <h2>Keep the masters</h2>
+          <p>Marketplaces change their requirements, and shop redesigns change display sizes. If your only copy of a product photo is the 2000-pixel web version, a future requirement for 3000 pixels means reshooting. Keep the original camera files in a separate archive folder, untouched, and treat everything you upload as a disposable copy made for today's purpose. That single habit protects you from almost every future regret in product photography.</p>
+
+          <div class="callout"><p><strong>The product-photo recipe:</strong> shoot or scan once at full quality, archive the original, then export at 2000 px, quality 80–85, JPEG or WebP, on a consistent background — for every product, every time.</p></div>
+        </article>
+      </div>
+
+      <!-- ==================== ARTICLE 11 ==================== -->
+      <div class="page" id="page-shrink-photos-for-email">
+        <article class="prose">
+          <a class="backlink" href="#/articles">← All articles</a>
+          <h1>Email Attachment Size Limits: How to Shrink Photos for Email</h1>
+          <p class="standfirst">"Your message is too large to send" always arrives at the worst moment — usually with a deadline attached. Knowing the actual limits, and how quickly photos can be brought under them, turns the error into a thirty-second fix.</p>
+          <p class="meta-line">ImageCompressorHub Guides · About 6 minutes to read</p>
+
+          <h2>The limits you are actually up against</h2>
+          <p>Attachment limits are set by both the sending and the receiving service, and the smaller of the two wins. These are the long-standing limits of the major providers:</p>
+          <table>
+            <thead>
+              <tr><th>Email service</th><th>Attachment limit (send / receive)</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Gmail</td><td>25 MB</td></tr>
+              <tr><td>Outlook.com / Hotmail</td><td>20 MB</td></tr>
+              <tr><td>Yahoo Mail</td><td>25 MB</td></tr>
+              <tr><td>iCloud Mail</td><td>20 MB (larger via Mail Drop)</td></tr>
+              <tr><td>Most company / school mail</td><td>Often 10–20 MB — the strictest of all</td></tr>
+            </tbody>
+          </table>
+          <p>There is a hidden catch on top of these numbers: attachments are encoded for transport in a format that inflates them by roughly a third. A 20 MB photo can count as about 26 MB on the wire — which is why a message can be rejected even when your files look comfortably under the limit. Aim to finish at about two-thirds of the stated cap and you will never be surprised.</p>
+
+          <h2>Why photos blow past the limit so easily</h2>
+          <p>A single modern phone photo is 3–8 MB. Five of them — one family gathering, one product to sell, one set of documents photographed page by page — is 15–40 MB, at or over every mainstream limit. The photos are not doing anything wrong; they were made for a camera roll and a big screen, not for a protocol designed in an era of text messages. The mismatch is in the destination, so the fix is to prepare a copy for the destination, exactly as you would for a website or an upload form.</p>
+
+          <h2>The quickest fix: resize and compress a copy</h2>
+          <p>For photos that will be viewed on a screen — which is nearly all emailed photos — a width of 1600–2000 pixels at quality 80 is indistinguishable from the original and lands around 300–600 KB per photo. That turns a 30 MB batch into roughly 3 MB, comfortably under every limit in the table, with room for the encoding overhead. In the <a href="#/">compressor</a>, add the whole set at once, set maximum width to 1920, keep quality at 80, and download all; our guide to <a href="#/batch-compress-photos">batch-compressing photos</a> walks through the routine, and <a href="#/reduce-photo-file-size">reducing photo size on any device</a> covers the built-in options on phones and computers if you would rather not use a browser tool.</p>
+          <p>Phones offer a shortcut worth knowing: attaching a photo inside the Mail app on iPhone prompts for a size (Small, Medium, Large, Actual Size), and many Android mail apps ask similarly. Those prompts are doing exactly the same resize-and-compress for you — handy for one photo, though a dedicated pass gives you consistent sizes when there are many.</p>
+
+          <h2>Two myths to retire</h2>
+          <p><strong>"Just zip them."</strong> ZIP archives compress text and documents well, but JPEG photos are already compressed — zipping a folder of photos typically saves only a few percent. It helps with organisation, not with the limit.</p>
+          <p><strong>"Send them one per email."</strong> This works mechanically, but it is miserable for the recipient, and it multiplies the chance one message lands in spam or gets missed. One message with sensibly sized photos is better manners and better delivery.</p>
+
+          <h2>When the photos genuinely must stay full-size</h2>
+          <p>Sometimes the recipient needs the originals: a printer, a designer, an insurer assessing damage. Then email is simply the wrong vehicle, and the honest answer is a file-sharing or cloud link, where the photos travel at full quality and the email itself stays tiny. Send the link with a note of how many files to expect and when the link expires. But be sure the need is real — in our experience, nine times out of ten the recipient wants to <em>look</em> at the photos, and a well-prepared 400 KB copy looks identical on every screen they own.</p>
+
+          <div class="callout"><p><strong>Rule of thumb:</strong> if the email is for viewing, resize to about 1920 px wide at quality 80 and the limit problem disappears; if it is for printing or professional work, send a link to the originals instead of fighting the cap.</p></div>
+        </article>
+      </div>
+
+      <!-- ==================== ARTICLE 12 ==================== -->
+      <div class="page" id="page-avif-vs-webp">
+        <article class="prose">
+          <a class="backlink" href="#/articles">← All articles</a>
+          <h1>AVIF vs WebP: The Next Generation of Image Formats</h1>
+          <p class="standfirst">JPEG has carried the web's photographs for three decades, but two newer formats now beat it comfortably. WebP is the established challenger; AVIF is the more ambitious one. Here is how they compare, and which deserves your images today.</p>
+          <p class="meta-line">ImageCompressorHub Guides · About 7 minutes to read</p>
+
+          <h2>Where things stand</h2>
+          <p>Our <a href="#/jpg-vs-png-vs-webp">comparison of the classic formats</a> ended with WebP as the modern all-rounder: roughly 25–35% smaller than JPEG for photographs, with transparency and animation in the same format, supported by every major browser. AVIF, which arrived later, pushes the same idea further. It is built on the AV1 video codec — technology designed for streaming film — repurposed for still images. That heritage gives AVIF compression tools JPEG's designers never had, and the results show it.</p>
+
+          <h2>File size and quality: AVIF wins, usually</h2>
+          <p>Head-to-head on photographs, AVIF typically produces files 20–30% smaller than WebP at equivalent visible quality, and around half the size of a comparable JPEG. Its advantage is largest exactly where older formats struggle: smooth gradients such as skies and studio backdrops, where AVIF avoids the banding and blockiness that creep into JPEG and, to a lesser extent, WebP. It also supports a wider colour range and high dynamic range content, which matters increasingly as HDR displays spread.</p>
+          <p>The gap narrows — and occasionally reverses — on images full of fine texture, and at very high quality settings where both formats are already nearly transparent. AVIF is not magic; it is a better set of trade-offs, most visible at the small file sizes the web cares about.</p>
+
+          <h2>The catches: speed and sharpness of detail</h2>
+          <p>AVIF's sophistication costs computation. Encoding an AVIF image is noticeably slower than encoding WebP or JPEG — on large batches, dramatically so — and decoding demands more from the visitor's device, though modern phones and computers handle it without complaint. There is also a character difference: at aggressive compression levels AVIF tends to smooth fine texture (skin pores, fabric weave, film grain) into a clean, slightly polished look, while WebP keeps a bit more grit at the price of more artefacts. Photographers who love grain sometimes prefer WebP's failure mode; everyone else rarely notices either.</p>
+
+          <h2>Support: closer than you might expect</h2>
+          <p>WebP is the safer pair of hands. Every modern browser displays it, most content platforms accept it, and image tools have supported it for years. AVIF's browser support has caught up remarkably — current Chrome, Firefox, Safari and Edge all display AVIF — but the wider ecosystem lags: some social platforms, older apps, email clients and content systems still reject or mishandle AVIF uploads. The pattern is the one we saw with WebP a few years earlier: browsers first, everyone else eventually.</p>
+
+          <h2>Which should you choose?</h2>
+          <ul>
+            <li><strong>Your own website, performance-critical:</strong> AVIF for photographs, with WebP or JPEG as the fallback for older browsers. Serving AVIF where supported is one of the largest remaining image optimisations — it directly lightens the hero images that decide your <a href="#/image-compression-and-core-web-vitals">Core Web Vitals</a>.</li>
+            <li><strong>Maximum compatibility — files you hand to other people or platforms:</strong> WebP for the web, JPEG when the destination is unknown or old. Nobody has ever been unable to open a JPEG.</li>
+            <li><strong>Graphics with transparency or animation:</strong> WebP remains the practical choice today; it handles both in one mature format.</li>
+            <li><strong>Archiving:</strong> neither. Keep your masters in their original form (or a lossless format); delivery formats are for publishing, not for keeping.</li>
+          </ul>
+          <p>A note on this site: the <a href="#/">ImageCompressorHub compressor</a> works with JPEG, PNG and WebP because those are the formats browsers can both read and write natively — AVIF encoding in the browser is still too slow and unevenly supported to offer honestly. If your publishing platform converts uploads to AVIF for you, that is the best of both worlds: prepare a clean, well-sized WebP or JPEG, and let the platform's servers do the heavy encoding.</p>
+
+          <h2>The direction of travel</h2>
+          <p>Formats evolve slowly and then suddenly. JPEG will remain openable forever, WebP is the web's current workhorse, and AVIF is steadily taking over the high end wherever delivery is automated. The practical lesson is the same one running through all our <a href="#/articles">guides</a>: keep untouched masters, and treat the published format as a replaceable decision you can revisit whenever the landscape shifts — because it will.</p>
+
+          <div class="callout"><p><strong>Bottom line:</strong> AVIF is smaller, WebP is safer, JPEG is universal. Choose per destination, keep your originals, and never let format debates delay the simpler wins — resizing and sensible quality.</p></div>
+        </article>
+      </div>
+
+      <!-- ==================== ARTICLE 13 ==================== -->
+      <div class="page" id="page-exif-metadata-and-privacy">
+        <article class="prose">
+          <a class="backlink" href="#/articles">← All articles</a>
+          <h1>Image Metadata (EXIF): What Your Photos Reveal and How to Remove It</h1>
+          <p class="standfirst">Every photo you take carries a hidden passenger: a block of data recording where you were, when you were there, and what you were holding. Most of the time it is harmless. Sometimes it tells strangers far more than the picture does.</p>
+          <p class="meta-line">ImageCompressorHub Guides · About 7 minutes to read</p>
+
+          <h2>What EXIF data is</h2>
+          <p>EXIF — Exchangeable Image File Format — is the standard way cameras and phones embed information inside a JPEG or TIFF file. A typical photo's EXIF block includes the date and time, the camera or phone model, lens and exposure settings (aperture, shutter speed, ISO), whether the flash fired, the software version that processed the shot — and, if location services were on, the GPS coordinates of the exact spot where you were standing, accurate to a few metres. Related standards add more: IPTC fields for captions, credits and copyright, and XMP data recording edits made in photo software. None of this is visible when you look at the picture. All of it travels with the file wherever the file goes.</p>
+
+          <h2>Why it deserves your attention</h2>
+          <p>The GPS field is the headline risk. Post a photo of an item you are selling, taken in your living room, on a site that does not strip metadata, and you may have published your home address to anyone who downloads the image and inspects it. Photos of children at home or school, of a car in its usual parking place, of anything valuable where it is kept — all can carry the same quiet disclosure. Timestamps add a second layer: a set of photos can reveal a household's routine, or prove a home is empty during a holiday the owner is posting about in real time.</p>
+          <p>Context matters, and panic is not warranted. Major social platforms strip EXIF data from uploaded photos as a matter of course, and for most casual sharing the practical risk is low. The risk concentrates in original files shared directly: marketplace listings, email attachments, file downloads, forums and smaller platforms that serve your file untouched. Those are exactly the places where a moment's preparation pays.</p>
+
+          <h2>How to see what your photos are carrying</h2>
+          <p>On Windows, right-click a photo, open Properties and the Details tab — you will find camera data and, if present, GPS coordinates. On a Mac, Preview's inspector (Tools → Show Inspector, the info tab) shows the same. Phones hide most of it: iOS Photos shows location on a map when it exists, which is itself a useful check. If the location is recorded and you did not intend it, assume the rest of the block is there too.</p>
+
+          <h2>How to remove it</h2>
+          <ul>
+            <li><strong>Compress or convert the photo.</strong> When an image is redrawn by a tool like our <a href="#/">compressor</a>, the new file is written from pixels alone — EXIF data, including GPS, is simply not carried across. Shrinking a photo for sharing therefore strips its metadata as a side effect, a point we note in our guide to <a href="#/reduce-photo-file-size">reducing photo file size</a>.</li>
+            <li><strong>Use the built-in remove option.</strong> Windows' Properties dialog offers "Remove Properties and Personal Information" at the bottom of the Details tab, which writes a cleaned copy.</li>
+            <li><strong>Turn off location tagging at the source.</strong> In your camera or phone settings you can stop GPS being recorded in the first place — the cleanest fix for future photos, though it does nothing for your existing library.</li>
+            <li><strong>Be careful with dedicated "EXIF remover" apps.</strong> The irony of uploading a photo to a random service to protect your privacy should be obvious. Prefer tools, like this one, that work locally on your device.</li>
+          </ul>
+
+          <h2>When to keep metadata instead</h2>
+          <p>EXIF is not purely a liability. Photographers use it to remember settings and improve; families use dates and locations to organise decades of memories; copyright and credit fields assert ownership. The sensible practice is a split one: keep your original files, metadata and all, in your private archive — and share cleaned copies. Compression gives you that split naturally, since you should be keeping originals and sharing prepared copies anyway. Strip for the audience, keep for yourself, and your photos will tell the story you chose — and only that story.</p>
+
+          <div class="callout"><p><strong>Quick check before your next listing or post:</strong> if you are sharing an original camera file anywhere that serves it untouched, run it through the <a href="#/">compressor</a> first. You get a smaller file and a metadata-free one in the same step.</p></div>
+        </article>
+      </div>
+
+      <!-- ==================== ARTICLE 14 ==================== -->
+      <div class="page" id="page-batch-compress-photos">
+        <article class="prose">
+          <a class="backlink" href="#/articles">← All articles</a>
+          <h1>How to Batch-Compress Many Photos at Once</h1>
+          <p class="standfirst">Compressing one photo is a ten-second job. Compressing two hundred, one at a time, is an afternoon nobody has. Batch processing applies one well-chosen recipe to the whole set — here is how to choose it and check the results.</p>
+          <p class="meta-line">ImageCompressorHub Guides · About 6 minutes to read</p>
+
+          <h2>Why batching changes the problem</h2>
+          <p>Individual compression invites individual decisions, and individual decisions invite inconsistency: this photo at quality 90, that one at 70, a third resized, a fourth forgotten. A batch approach flips the order. You decide the destination first — a website gallery, an email, a marketplace, an archive — derive one recipe from it, test the recipe on a few representative photos, and then let the machine apply it uniformly. The result is not just faster; it is more consistent, which matters when the photos will be seen together, as products in a shop or pictures in one album.</p>
+
+          <h2>Step 1: Pick the recipe from the destination</h2>
+          <ul>
+            <li><strong>Web galleries and blogs:</strong> maximum width 1600 px, JPEG or WebP, quality 80.</li>
+            <li><strong>Product photos for a shop:</strong> longest side 2000 px, quality 82–85 — see our <a href="#/product-photos-for-online-shop">product photo guide</a> for the reasoning.</li>
+            <li><strong>Email and messaging:</strong> maximum width 1920 px, quality 80, per our <a href="#/shrink-photos-for-email">email size guide</a>.</li>
+            <li><strong>Upload forms with a stated limit:</strong> work backwards from the limit — start at 1600 px and quality 80, then step down until the largest file in the batch fits.</li>
+          </ul>
+          <p>Notice that every recipe pairs a dimension with a quality. The dimension does most of the work — as our <a href="#/resize-vs-compress">resize vs compress explainer</a> shows, halving dimensions quarters the pixel count — and the quality setting finishes the job.</p>
+
+          <h2>Step 2: Test on the hardest photos first</h2>
+          <p>Before running all two hundred, pick three to five photos that stress the recipe: one with fine detail (foliage, fabric, hair), one with smooth gradients (sky, studio background), one taken in low light, where noise inflates file sizes and hides artefacts. Compress just those, view them at full size, and check both the look and the resulting file sizes. If the detailed shot survives quality 80 — it almost always does — the whole batch will. If a gradient bands, nudge quality up five points and retest. Five minutes of testing protects the entire set, and it replaces the vague worry of "is 80 too low?" with evidence; our article on <a href="#/how-much-quality-loss-is-acceptable">how much quality loss is acceptable</a> explains what to look for.</p>
+
+          <h2>Step 3: Run the batch, keeping originals separate</h2>
+          <p>In the <a href="#/">ImageCompressorHub compressor</a>, this step is deliberately dull: drag in the whole folder or select all the files at once, confirm the settings, and use Download All when processing finishes. Two organisational rules make the output usable. First, never let compressed files land in the same folder as the originals under the same names — keep a clearly named output folder ("web", "email-ready", "shop-2000px") so future-you can tell masters from copies at a glance. Second, keep the originals, full stop: compression is one-way, storage is cheap, and the batch you make for today's destination will not suit tomorrow's.</p>
+
+          <h2>Step 4: Spot-check the results by size, then by eye</h2>
+          <p>After the run, sort the output folder by file size. Outliers are information: a file that is three times larger than its neighbours usually contains noise, fine texture or a near-duplicate of a photo that compresses poorly — glance at it to confirm it looks right. A file that is suspiciously tiny may have been a small image to begin with, enlarged by nothing and compressed to mush — check it too. Then open two or three at random and view them at the size they will actually be seen. Batch work fails silently or not at all; a two-minute spot-check is what makes it trustworthy.</p>
+
+          <h2>When not to batch</h2>
+          <p>Mixed sets deserve a split. A folder containing both photographs and screenshots should be separated first — the screenshots want PNG and resizing only, as our <a href="#/compress-screenshots">screenshot guide</a> explains, while the photos want JPEG or WebP at quality 80. Likewise, a handful of hero images destined for a homepage deserve individual attention at higher quality. Batch the many, hand-finish the few: that division of labour is the whole secret.</p>
+
+          <div class="callout"><p><strong>The batch habit in one line:</strong> one destination, one recipe, tested on the hardest photos, applied to all, spot-checked after — and the originals never touched.</p></div>
+        </article>
+      </div>
+
+      <!-- ==================== ARTICLE 15 ==================== -->
+      <div class="page" id="page-fix-file-too-large-upload-errors">
+        <article class="prose">
+          <a class="backlink" href="#/articles">← All articles</a>
+          <h1>Fixing 'File Too Large' Upload Errors</h1>
+          <p class="standfirst">Job applications, visa portals, university forms, marketplaces — sooner or later a website refuses your photo. The rejection feels arbitrary, but it follows rules, and once you know them the fix takes a minute.</p>
+          <p class="meta-line">ImageCompressorHub Guides · About 6 minutes to read</p>
+
+          <h2>Read the error properly: three different limits wear one disguise</h2>
+          <p>"File too large" can mean three separate things, and each has a different cure:</p>
+          <ul>
+            <li><strong>File size</strong> — the file's weight in KB or MB exceeds the cap ("maximum 200 KB"). Cured by compressing and resizing.</li>
+            <li><strong>Dimensions</strong> — the image's pixel width or height is outside an allowed range. Some portals want a passport-style photo of an exact size, such as 600 × 600 px; others reject images above a pixel ceiling. Cured by resizing to the stated dimensions.</li>
+            <li><strong>Format</strong> — the site accepts only certain types, usually JPEG or PNG, and reports anything else confusingly. A photo in HEIC (iPhone's default) or WebP may be rejected even at a tiny size. Cured by converting to JPEG.</li>
+          </ul>
+          <p>Read the form's instructions — the small print near the upload button — before touching the file. Knowing whether you are chasing 200 KB, 600 × 600 pixels, or a JPEG usually turns a frustrating loop of guesses into a single successful attempt.</p>
+
+          <h2>The fix, in the order that works</h2>
+          <p><strong>1. Convert to the accepted format first.</strong> If the photo is HEIC, PNG or WebP and the form wants JPEG, convert it: add it to the <a href="#/">compressor</a> and choose JPEG as the output format. A photograph converted from PNG to JPEG often shrinks by 80% in this step alone — the format mismatch our <a href="#/jpg-vs-png-vs-webp">format guide</a> warns about is the single most common cause of stubborn uploads.</p>
+          <p><strong>2. Resize to the destination.</strong> If the form states pixel dimensions, match them. If it does not, resize to a sensible ceiling for the purpose — 1600 px wide for a document or listing photo, 1024 px or less for a profile or ID-style image. Resizing is the most powerful shrink available; our <a href="#/resize-vs-compress">resize vs compress explainer</a> shows why it beats quality adjustments.</p>
+          <p><strong>3. Lower quality in steps.</strong> Start at 80 and check the resulting file size, which the compressor shows next to each file. Still too big? Try 70, then 60, and if the limit is truly strict — some portals demand under 50 KB — reduce the dimensions further as well. Small display sizes forgive low quality: an ID photo shown at 300 pixels wide looks fine at settings that would ruin a poster.</p>
+          <p><strong>4. Check the actual number before uploading.</strong> Compare the final file size with the limit, leaving a small margin. If the form counts in KB, remember that 200 KB on the form may mean 200,000 bytes or 204,800 depending on the system — aim a little under.</p>
+
+          <h2>Scenario notes</h2>
+          <p><strong>Job and university applications</strong> usually cap a photo or scanned document at 200 KB–2 MB. Scans are the trap: a scanner set to 600 DPI produces enormous files. Rescan at 200–300 DPI if you can — our <a href="#/dpi-and-resolution-explained">DPI explainer</a> covers why that loses nothing readable — or compress the existing scan as above.</p>
+          <p><strong>Government and visa portals</strong> are the strictest, often combining a small KB cap with exact pixel dimensions and a plain background requirement. Meet the dimensions exactly, then adjust quality until the size fits; do not crop or stretch the photo to fit, as that can breach the photo rules themselves.</p>
+          <p><strong>Marketplaces and classifieds</strong> rarely reject for size alone, but very large uploads time out on slow connections and get compressed harshly when they succeed. Preparing the photo yourself, as in our <a href="#/product-photos-for-online-shop">product photo guide</a>, gives a faster upload and a better-looking listing.</p>
+
+          <h2>If it still will not upload</h2>
+          <p>Work through the unglamorous causes: the file name containing unusual characters (rename it to something plain like photo.jpg), a second hidden file being included, the browser caching an earlier failed attempt (refresh and retry), or the site's own limit being lower than its instructions claim (aim for half the stated cap and test). And keep perspective: the file you are fighting with is a copy. Your original stays untouched on your device, so you can afford to compress the copy as hard as the form demands — our guide to <a href="#/reduce-photo-file-size">reducing photo file size</a> has gentler settings for occasions when quality matters more than the cap.</p>
+
+          <div class="callout"><p><strong>The universal recipe:</strong> JPEG format, dimensions matched to the form (or 1600 px wide at most), quality stepped down from 80 until the size fits — that combination satisfies nearly every upload limit on the internet.</p></div>
+        </article>
+      </div>
+
+      <!-- ==================== ARTICLE 16 ==================== -->
+      <div class="page" id="page-image-compression-and-core-web-vitals">
+        <article class="prose">
+          <a class="backlink" href="#/articles">← All articles</a>
+          <h1>Image Compression and Core Web Vitals: Passing the LCP Test</h1>
+          <p class="standfirst">Google measures how your pages feel to real visitors, and the single biggest factor is usually an image. If your Largest Contentful Paint is failing, your hero image is the first place to look — and the easiest to fix.</p>
+          <p class="meta-line">ImageCompressorHub Guides · About 7 minutes to read</p>
+
+          <h2>What Core Web Vitals are, briefly</h2>
+          <p>Core Web Vitals are three measurements Google uses to judge page experience, and they feed into search rankings. <strong>Largest Contentful Paint (LCP)</strong> times how long the main content — usually the biggest image or headline block — takes to appear; the target is 2.5 seconds or less. <strong>Cumulative Layout Shift (CLS)</strong> measures how much the page jumps around while loading; the target is a score under 0.1. <strong>Interaction to Next Paint (INP)</strong> measures responsiveness when a visitor taps or clicks; images play only a minor role there. For most sites, images decide the first two scores outright — which is good news, because images are the easiest part of a page to fix without a developer.</p>
+
+          <h2>Why your LCP is almost certainly an image</h2>
+          <p>The "largest contentful" element is, by definition, the biggest thing in the first screenful. On homepages, product pages, articles and landing pages, that is overwhelmingly the hero image or the main product photo — text blocks rarely out-render a photograph. So the LCP clock is, in practice, timing how long your main image takes to download and display. Every kilobyte you remove from that image shortens the score almost directly. This is the sharpest version of the general problem we describe in <a href="#/why-large-images-slow-down-websites">why large images slow down your website</a>: not just "the page is heavy," but "this specific file is the metric."</p>
+          <p>You can confirm it in seconds: run your page through PageSpeed Insights and it will name the LCP element explicitly. When it names an image — it usually does — you have your assignment.</p>
+
+          <h2>The four fixes that move LCP</h2>
+          <ol>
+            <li><strong>Compress the hero image properly.</strong> Resize it to its display size (at most twice as wide, for retina screens) and save at quality 75–85. A hero that arrives at 1.8 MB and leaves at 180 KB is a common, entirely realistic outcome of the workflow in our <a href="#/compress-images-for-websites">website compression guide</a>.</li>
+            <li><strong>Use a modern format.</strong> WebP cuts roughly a quarter to a third from a JPEG's weight; AVIF can halve it. Our <a href="#/avif-vs-webp">AVIF vs WebP comparison</a> covers when each is appropriate. If your platform serves modern formats automatically, make sure the feature is on.</li>
+            <li><strong>Do not lazy-load the hero.</strong> Lazy loading is right for images below the fold, but applied to the LCP image it delays the very thing being timed. The main image should load eagerly and early; everything else can wait.</li>
+            <li><strong>Keep the total page in proportion.</strong> A light hero cannot rescue a page carrying forty heavy gallery images. Compress everything, with the hero getting the most care.</li>
+          </ol>
+
+          <h2>CLS: the image problem with a two-minute fix</h2>
+          <p>Layout shift happens when the browser lays out text, then an image arrives and shoves everything down to make room. The cure is not compression but information: include width and height attributes (or an equivalent aspect-ratio style) on every image tag, so the browser reserves the correct space before the file downloads. The text never moves, the shift score collapses, and readers stop losing their place mid-sentence. It is the cheapest Core Web Vitals win available, and it is also one of the checklist items in our <a href="#/image-seo-guide">image SEO guide</a>, because the same habits serve both rankings systems.</p>
+
+          <h2>Working targets and honest expectations</h2>
+          <p>Aim for a hero image under 200 KB, ordinary content images under 100 KB, and — if you serve AVIF or WebP — lower still. Then retest. One caution about scores: lab tests (including PageSpeed's default simulation) model a mid-range phone on a throttled connection, so they are stricter than your own browsing experience — deliberately. Passing under those conditions means real visitors, on real networks, get a page that feels instant. Chasing a perfect 100 is rarely worth it; moving a failing LCP of 5 seconds to a passing 2 is worth a great deal, and images alone usually get you there.</p>
+
+          <div class="callout"><p><strong>Your next ten minutes:</strong> find your LCP image in PageSpeed Insights, run it through the <a href="#/">compressor</a> at its display size and quality 80, re-upload, and retest. For most sites, that single file is the difference between failing and passing.</p></div>
+        </article>
+      </div>
+
+      <!-- ==================== ARTICLE 17 ==================== -->
+      <div class="page" id="page-transparent-backgrounds-and-png-size">
+        <article class="prose">
+          <a class="backlink" href="#/articles">← All articles</a>
+          <h1>Transparent Backgrounds: Why PNG Files Get So Big and What to Do</h1>
+          <p class="standfirst">You cut out a product, saved it with a transparent background, and the file came out at 4 MB. Nothing went wrong — transparency is genuinely expensive. Here is why, and the ways around it.</p>
+          <p class="meta-line">ImageCompressorHub Guides · About 6 minutes to read</p>
+
+          <h2>Transparency means an extra channel of data</h2>
+          <p>A normal image stores three numbers per pixel: red, green and blue. A transparent image stores a fourth — the alpha channel — recording how see-through each pixel is, from fully opaque to fully invisible. That is a third more data before compression even starts. Worse, the edges of a cut-out are the hardest content to compress: a product's outline against nothing is a long, detailed, high-contrast border, and semi-transparent pixels around hair, fur, glass or soft shadows are all unique values that resist pattern-matching. The alpha channel also defeats many of the tricks lossy formats use, because a slightly wrong alpha value shows as a visible halo or fringe.</p>
+
+          <h2>And transparency rules out the small formats</h2>
+          <p>The deeper problem is format lock-in. JPEG — the web's efficient photo format — has no alpha channel at all, so a transparent image simply cannot be a JPEG. That leaves PNG as the default, and PNG is lossless: it stores every pixel exactly, which is wonderful for a logo and punishing for a photograph, as our <a href="#/jpg-vs-png-vs-webp">format comparison</a> details. A transparent product photo therefore pays three times: the extra channel, the difficult edges, and a format that cannot discard anything. A 4 MB result for a large cut-out is not a mistake; it is arithmetic.</p>
+
+          <h2>First question: do you actually need transparency?</h2>
+          <p>Many transparent images are placed, in the end, on a plain white or solid-coloured page — product grids, presentation slides, documents. If the final background is known and fixed, flatten the image onto that background and save as JPEG or WebP. The file collapses to normal photo size, because it is now a normal photo. Keep the transparent master in your archive for the day a different background is needed. This one decision — flatten when the destination is known — eliminates most oversized PNGs in the wild.</p>
+
+          <h2>When you do need it: the alternatives</h2>
+          <ul>
+            <li><strong>WebP with transparency.</strong> WebP supports an alpha channel in both its lossy and lossless modes. A transparent lossy WebP is typically a quarter to a tenth the size of the equivalent PNG, and every modern browser displays it. For transparent images on your own website, this is usually the answer — add the PNG to the <a href="#/">compressor</a> and choose WebP as the output format to see the difference on your own file.</li>
+            <li><strong>AVIF with transparency.</strong> AVIF also supports alpha and compresses even harder; our <a href="#/avif-vs-webp">format comparison</a> covers its support trade-offs.</li>
+            <li><strong>SVG for graphics.</strong> If the "image" is really a logo, icon or illustration drawn from shapes, a vector SVG is tiny, perfectly sharp at any size, and transparent by nature. This applies to drawn graphics, not photographs.</li>
+            <li><strong>A smaller, palette-reduced PNG.</strong> If PNG is mandatory — a marketplace that accepts nothing else, say — resize to the exact display size and, for simple graphics, reduce the colour palette. Every pixel you trim is a pixel PNG no longer has to store exactly.</li>
+          </ul>
+
+          <h2>Trim the emptiness</h2>
+          <p>Cut-outs often carry a generous margin of fully transparent pixels around the subject — leftover canvas from the editing session. Those pixels are cheap individually (long identical runs compress well) but they inflate the dimensions, and dimensions drive everything else, including how large the image is treated by whatever displays it. Crop tightly to the subject, resize to the largest size it will genuinely be shown — for shop images, the standards in our <a href="#/product-photos-for-online-shop">product photo guide</a> apply — and only then export. A tightly cropped 1200-pixel cut-out in WebP will outperform a sprawling 4000-pixel PNG by an order of magnitude, while looking identical on the page.</p>
+
+          <div class="callout"><p><strong>The transparency rule:</strong> if the background is known, flatten and use JPEG or WebP; if it is not, keep the master PNG but publish a transparent WebP — and never ship a photo-sized PNG to a web page by default.</p></div>
+        </article>
+      </div>
+
+      <!-- ==================== ARTICLE 18 ==================== -->
+      <div class="page" id="page-how-much-quality-loss-is-acceptable">
+        <article class="prose">
+          <a class="backlink" href="#/articles">← All articles</a>
+          <h1>How Much Quality Loss Is Acceptable? The 80–85% Quality Rule Explained</h1>
+          <p class="standfirst">Somewhere along the way, "save photos at quality 80" became the web's folk wisdom. It is good advice — but it is widely misunderstood, and knowing why it works tells you exactly when to break it.</p>
+          <p class="meta-line">ImageCompressorHub Guides · About 6 minutes to read</p>
+
+          <h2>First, unlearn what the number means</h2>
+          <p>Quality 80 does not mean "80% of the quality" or "20% of the image removed." The quality scale is an instruction to the encoder about how precisely to record fine detail, and it is neither linear nor standardised: one program's 80 is not identical to another's, because each encoder implements the scale its own way. As our guide to <a href="#/how-image-compression-works">how compression works</a> explains, the top of the scale is where the surprise lives — moving from 100 to 90 commonly halves a photo's file size with no visible change at all, because quality 100 spends enormous bytes recording detail finer than eyes can detect. The interesting decisions all happen between 50 and 95, and the file size falls steeply at the top of that range and flattens at the bottom.</p>
+
+          <h2>Why 80–85 became the rule</h2>
+          <p>The 80–85 band earned its reputation by sitting at the knee of that curve. Above it, you pay many kilobytes for improvements nobody can see outside a pixel-by-pixel comparison. Below it, savings shrink while artefacts — blockiness in gradients, smearing around edges, noise near text — start becoming visible at normal viewing sizes. At 80–85, a photograph displayed at its intended size is, for nearly all viewers on nearly all screens, indistinguishable from the original, at a third to a fifth of the weight. That combination — invisible difference, dramatic saving — is exactly what a rule of thumb is for.</p>
+
+          <h2>When to go higher</h2>
+          <ul>
+            <li><strong>Images people will zoom into:</strong> product photos, portfolio pieces, anything sold on its detail. Use 85–92 and accept the larger file; scrutiny is the use case quality exists for. Our <a href="#/product-photos-for-online-shop">product photo guide</a> works in this range.</li>
+            <li><strong>Images that will be edited or re-saved:</strong> every lossy save discards a little more, so a file destined for further work should start high — or better, stay lossless until its final export.</li>
+            <li><strong>Subtle gradients:</strong> fog, dusk skies, studio backdrops band visibly at lower settings. Give them a few extra points.</li>
+          </ul>
+
+          <h2>When to go lower</h2>
+          <ul>
+            <li><strong>Small display sizes:</strong> a thumbnail or avatar shown at 200 pixels wide hides artefacts completely; 60–70 is plenty, and the file becomes tiny.</li>
+            <li><strong>Background and decorative images:</strong> anything blurred, darkened or sitting behind text is judged by nobody. Compress boldly.</li>
+            <li><strong>Hard limits:</strong> when a form demands 100 KB, the limit outranks aesthetics — step down until it fits, as our <a href="#/fix-file-too-large-upload-errors">upload errors guide</a> describes. At small display sizes, the result still looks fine.</li>
+          </ul>
+
+          <h2>Judge with your eyes, at the real size</h2>
+          <p>The only reliable test is looking. Export at your candidate setting, view the image at the size it will actually be displayed — not zoomed to 400%, where every setting looks terrible and the comparison stops meaning anything — and look at the revealing places: faces, edges against sky, fine texture, any text. Then, if you want to be thorough, view at 100% as well; artefacts invisible at display size but faintly present at 100% are a reasonable trade for a much smaller file, because your audience will never see the 100% view. Flip between original and compressed quickly: if you cannot reliably tell which is which, the setting is right, whatever the number says.</p>
+
+          <h2>The rule behind the rule</h2>
+          <p>Acceptable loss is not a property of the image; it is a property of the viewing. A billboard, a phone screen, a printed page and a 100-pixel avatar all forgive different amounts. So treat 80–85 as the starting point it is: the default for ordinary photographs at ordinary sizes, adjusted up for scrutiny and down for smallness — and always, always applied to a copy, with the untouched original kept safe. Loss you chose, at a level you tested, is a tool. Loss that happened to you by accident is just damage.</p>
+
+          <div class="callout"><p><strong>Try the test yourself:</strong> compress one photo in the <a href="#/">compressor</a> at 95, 85, 75 and 60, and compare the sizes against what your eyes can actually detect. Most people find their personal sweet spot within a point or two of 80 — and the file sizes usually shock them.</p></div>
+        </article>
+      </div>
+
+      <!-- ==================== ARTICLE 19 ==================== -->
+      <div class="page" id="page-gif-alternatives">
+        <article class="prose">
+          <a class="backlink" href="#/articles">← All articles</a>
+          <h1>Why GIFs Are So Heavy — and the Smaller Alternatives</h1>
+          <p class="standfirst">A ten-second GIF can be larger than the full video clip it was cut from. That is not an exaggeration but a consequence of 1987 technology doing a 2026 job. Here is why GIFs balloon, and what to use instead.</p>
+          <p class="meta-line">ImageCompressorHub Guides · About 6 minutes to read</p>
+
+          <h2>A format from another era</h2>
+          <p>GIF — Graphics Interchange Format — was introduced in 1987, when a fast connection moved data slower than a modern phone receives in a blink, and its animation support was a modest extension of a still-image format. Nothing about it was designed for moving pictures of the photographic kind. Three structural limits explain its weight:</p>
+          <ul>
+            <li><strong>256 colours, total.</strong> Every frame is squeezed into a palette of at most 256 colours. Photographic content — a face, a sunset, a football match — contains millions, so the encoder dithers, scattering dots to fake the missing shades, which adds noise that itself needs storing.</li>
+            <li><strong>Frame-by-frame thinking.</strong> A GIF is essentially a stack of still images. It can skip redrawing pixels that do not change between frames, but it has none of the motion prediction that video codecs use to describe movement compactly.</li>
+            <li><strong>No modern compression.</strong> Its lossless compression predates the techniques in PNG, let alone WebP or video codecs — the same family of limitations we discuss in <a href="#/how-image-compression-works">how compression works</a>.</li>
+          </ul>
+          <p>The result: a five-second, modest-resolution GIF of real-world footage commonly lands between 5 and 20 MB. The same clip as a proper video file is often under 1 MB — better looking, with sound available, at a tenth of the weight.</p>
+
+          <h2>The best alternative is usually a video file</h2>
+          <p>If the animation is photographic — screen recordings, product demos, clips, reactions — the right container is a video: MP4 (H.264) for universal compatibility, or WebM for even smaller files on the web. Video codecs were built for exactly this: they track how blocks of pixels move between frames and store the movement, not a fresh picture each time. Every modern platform that appears to show "GIFs" — social feeds, messaging apps, image hosts — quietly converts uploads to video for precisely this reason. When a site lets you embed an MP4 with autoplay, muted and looping attributes, visitors see a "GIF" that loads ten times faster and plays more smoothly. That is not a compromise; it is what the big platforms already do behind the curtain.</p>
+
+          <h2>When you need an image format: animated WebP and AVIF</h2>
+          <p>Sometimes a genuine image file is required — an email client, a forum, a documentation page that will not embed video. Animated WebP is the direct modern successor: it supports full colour, transparency and far better compression, typically producing files 60–80% smaller than the equivalent GIF at visibly better quality. Animated AVIF goes further still on size, with the support caveats described in our <a href="#/avif-vs-webp">AVIF vs WebP comparison</a>. Either one ends the 256-colour era for your animations.</p>
+
+          <h2>If you must ship a GIF, shrink it properly</h2>
+          <ul>
+            <li><strong>Reduce the dimensions.</strong> Most GIFs are displayed small; a 480-pixel-wide version carries a fraction of the data of a 1080-pixel one.</li>
+            <li><strong>Trim the length and frame rate.</strong> Halving the frames halves the file. Many animations read perfectly at 12–15 frames per second instead of 24–30.</li>
+            <li><strong>Crop tightly.</strong> Cut everything the viewer does not need to watch; static regions still cost data in GIF.</li>
+            <li><strong>Limit colours deliberately.</strong> Flat, graphic content — a loading spinner, a simple diagram — genuinely suits a small palette and compresses beautifully. Save GIF for that kind of content, where it was always at home.</li>
+          </ul>
+
+          <h2>Where GIF still earns its place</h2>
+          <p>GIF survives because it works everywhere, including ancient software and stubborn email clients, and for tiny, simple, flat-colour animations — a blinking cursor graphic, a three-frame icon — its overhead is trivial and its compatibility unmatched. The mistake is not using GIF; it is using it for photographic motion, where it is the heaviest possible choice. Match the format to the content, the same principle behind every decision in our <a href="#/jpg-vs-png-vs-webp">format guide</a>, and your pages, chats and documents all get lighter at once.</p>
+
+          <div class="callout"><p><strong>A revealing comparison:</strong> take a short clip you would normally GIF-ify and check the file sizes — the video will usually be smaller than the still photos in our <a href="#/">compressor</a> queue. Animation is video's job now; let it do it.</p></div>
+        </article>
+      </div>
+
+      <!-- ==================== ARTICLE 20 ==================== -->
+      <div class="page" id="page-resize-vs-compress">
+        <article class="prose">
+          <a class="backlink" href="#/articles">← All articles</a>
+          <h1>Resize vs Compress: What Is the Difference and Which Do You Need?</h1>
+          <p class="standfirst">People use "resize" and "compress" as if they were the same button. They do different things, to different properties of the image — and choosing the right one, in the right order, is most of practical image optimisation.</p>
+          <p class="meta-line">ImageCompressorHub Guides · About 6 minutes to read</p>
+
+          <h2>The two operations, defined plainly</h2>
+          <p><strong>Resizing</strong> changes the image's dimensions — its pixel width and height. A photo resized from 4000 × 3000 to 1600 × 1200 literally has fewer pixels: about 1.9 million instead of 12 million. The picture's content is the same, rendered on a smaller grid.</p>
+          <p><strong>Compressing</strong> changes how efficiently those pixels are stored, without changing their count. The image stays 4000 × 3000, but the file describing it gets smaller because the encoder records the pixels more cleverly — losslessly, by removing redundancy, or lossily, by approximating detail the eye will not miss, as explained in our guide to <a href="#/how-image-compression-works">how compression works</a>.</p>
+          <p>One changes how much information the image has; the other changes how much room that information takes up. File size depends on both, which is why the two are so often confused — and why using them together is so effective.</p>
+
+          <h2>Why resizing is usually the bigger lever</h2>
+          <p>Pixel counts multiply. Halving an image's width and height does not halve the data — it quarters it, because area shrinks in both directions at once. A 4000-pixel-wide photo carries roughly six times the pixels of a 1600-pixel-wide version of the same shot. Compression, by contrast, typically saves 50–80% on a photograph — substantial, but bounded by how much redundancy and invisible detail the image contains. When an image is far larger than its destination, resizing wins by a landslide; when the dimensions are already right, compression is the only lever left. Knowing your image's destination size is therefore the master skill — it is also why <a href="#/dpi-and-resolution-explained">resolution questions</a> are really questions about matching pixels to purpose.</p>
+
+          <h2>Which do you need? A decision guide</h2>
+          <ul>
+            <li><strong>The image is bigger in pixels than it will ever be displayed.</strong> Resize first — this is most camera photos headed for the web, email or documents. A 4000 px photo in an 800 px slot is carrying about 25 times the pixels the slot can show.</li>
+            <li><strong>The dimensions are right but the file is still heavy.</strong> Compress. A correctly sized photo at quality 100, or saved as PNG, shrinks dramatically with no change in dimensions.</li>
+            <li><strong>Both are wrong — the common case.</strong> Resize to the destination size, then compress the result. This is the standard workflow in our <a href="#/compress-images-for-websites">website compression guide</a>, and the combination routinely removes 90% or more of the original file weight.</li>
+            <li><strong>The image must keep exact dimensions</strong> (a form demands 600 × 600 px, a template is fixed). Resize to exactly that, then use quality alone to meet any file-size limit.</li>
+            <li><strong>It is a screenshot, logo or graphic.</strong> Resize if oversized, but compress losslessly (PNG) or not at all — lossy compression is what blurs text, as our <a href="#/compress-screenshots">screenshot guide</a> explains.</li>
+          </ul>
+
+          <h2>Order matters: resize first, then compress</h2>
+          <p>Always resize before compressing, for two reasons. First, efficiency: there is no point spending computation precisely encoding millions of pixels you are about to throw away. Second, quality: a lossy encoder working on the full-size image makes its approximations at the wrong scale; resizing the already-compressed result then resamples those artefacts into the final image. Resize-then-compress gives the encoder the actual final pixels to optimise. In the <a href="#/">compressor</a> this ordering is automatic — set the maximum width or height and the quality together, and the tool scales first and encodes second.</p>
+
+          <h2>Two warnings that apply to both</h2>
+          <p><strong>Never enlarge.</strong> Resizing up invents pixels by interpolation; it makes files bigger and pictures softer, and no setting reverses it. If an image is smaller than its destination, the honest fixes are a smaller display size or a better original.</p>
+          <p><strong>Work on copies.</strong> Both operations are one-way doors — discarded pixels and discarded detail do not come back. Keep the original untouched, and produce resized, compressed copies for each purpose: one for the website, one for email, one for the archive. The <a href="#/articles">rest of our guides</a> are largely about choosing the right copy for each destination — now you know the two operations every one of those recipes is built from.</p>
+
+          <div class="callout"><p><strong>The one-line summary:</strong> resize to change how big the image <em>is</em>, compress to change how much it <em>weighs</em> — and for almost every real photo, do the first, then the second.</p></div>
+        </article>
+      </div>
+
       <!-- ==================== ABOUT ==================== -->
       <div class="page" id="page-about">
         <article class="prose">
@@ -874,6 +1412,96 @@
           tag: "SEO",
           title: "Image SEO: File Size, Names and Alt Text That Rank",
           desc: "How image weight, file names and alt text influence search rankings, with a pre-publish checklist you can reuse for every image."
+        },
+        {
+          slug: "why-large-images-slow-down-websites",
+          tag: "Performance",
+          title: "Why Large Images Slow Down Your Website",
+          desc: "Images are usually most of a page's weight. How those extra megabytes delay loading, hurt mobile visitors most, and what to do about it."
+        },
+        {
+          slug: "image-sizes-for-social-media",
+          tag: "Social media",
+          title: "Best Image Sizes for Social Media",
+          desc: "The pixel dimensions each major platform actually displays, why platforms recompress your uploads, and how to post photos that stay sharp."
+        },
+        {
+          slug: "dpi-and-resolution-explained",
+          tag: "Explainer",
+          title: "Image DPI and Resolution Explained Simply",
+          desc: "Pixels, DPI and print size untangled: why DPI metadata does not change your file, and the numbers that actually matter for screens and print."
+        },
+        {
+          slug: "compress-screenshots",
+          tag: "How-to",
+          title: "How to Compress Screenshots Without Making Text Blurry",
+          desc: "Screenshots go fuzzy for predictable reasons. The format, resizing and colour tricks that keep text crisp while the file shrinks."
+        },
+        {
+          slug: "product-photos-for-online-shop",
+          tag: "Selling online",
+          title: "Preparing Product Photos for an Online Shop",
+          desc: "Dimensions, backgrounds, zoom and file size: how to prepare product photos that look professional and load fast on any marketplace or shop."
+        },
+        {
+          slug: "shrink-photos-for-email",
+          tag: "Email",
+          title: "Email Attachment Size Limits: How to Shrink Photos for Email",
+          desc: "Gmail, Outlook and Yahoo all cap attachments. The limits, why photos blow past them, and the quickest ways to get under them."
+        },
+        {
+          slug: "avif-vs-webp",
+          tag: "Formats",
+          title: "AVIF vs WebP: The Next Generation of Image Formats",
+          desc: "Two modern formats promise smaller photos than JPEG ever could. How AVIF and WebP compare on size, quality, speed and support."
+        },
+        {
+          slug: "exif-metadata-and-privacy",
+          tag: "Privacy",
+          title: "Image Metadata (EXIF): What Your Photos Reveal and How to Remove It",
+          desc: "Your photos quietly carry GPS coordinates, timestamps and camera details. What EXIF data is, why it matters, and how to strip it before sharing."
+        },
+        {
+          slug: "batch-compress-photos",
+          tag: "How-to",
+          title: "How to Batch-Compress Many Photos at Once",
+          desc: "Dozens or hundreds of photos to shrink? A batch workflow with consistent settings, sensible folders and quality checks that take minutes, not hours."
+        },
+        {
+          slug: "fix-file-too-large-upload-errors",
+          tag: "Troubleshooting",
+          title: "Fixing 'File Too Large' Upload Errors",
+          desc: "A form, portal or marketplace rejected your image. How to read the limit, shrink the file in the right order, and get the upload accepted."
+        },
+        {
+          slug: "image-compression-and-core-web-vitals",
+          tag: "Performance",
+          title: "Image Compression and Core Web Vitals: Passing the LCP Test",
+          desc: "Your hero image is probably your LCP element. How image weight, dimensions and format decide your Core Web Vitals scores — and how to fix them."
+        },
+        {
+          slug: "transparent-backgrounds-and-png-size",
+          tag: "Formats",
+          title: "Transparent Backgrounds: Why PNG Files Get So Big and What to Do",
+          desc: "Transparency pushes you into PNG, and PNG photos are huge. Why that happens, and the alternatives that keep the cut-out look without the megabytes."
+        },
+        {
+          slug: "how-much-quality-loss-is-acceptable",
+          tag: "Explainer",
+          title: "How Much Quality Loss Is Acceptable? The 80–85% Quality Rule Explained",
+          desc: "Why quality 80 became the web's rule of thumb, when to go higher or lower, and how to judge the result with your own eyes instead of guessing."
+        },
+        {
+          slug: "gif-alternatives",
+          tag: "Formats",
+          title: "Why GIFs Are So Heavy — and the Smaller Alternatives",
+          desc: "A ten-second GIF can outweigh a full video clip. Why the 1987 format is so inefficient, and what to use instead for short animations."
+        },
+        {
+          slug: "resize-vs-compress",
+          tag: "Explainer",
+          title: "Resize vs Compress: What Is the Difference and Which Do You Need?",
+          desc: "Resizing changes pixels; compressing changes bytes. The difference, why order matters, and a simple way to decide what each image needs."
         }
       ];
 
@@ -913,6 +1541,21 @@
         "/jpg-vs-png-vs-webp": { page: "page-jpg-vs-png-vs-webp", nav: "articles", title: "JPG vs PNG vs WebP: Which Format Should You Use? — ImageCompressorHub" },
         "/reduce-photo-file-size": { page: "page-reduce-photo-file-size", nav: "articles", title: "How to Reduce Photo File Size on Any Device — ImageCompressorHub" },
         "/image-seo-guide": { page: "page-image-seo-guide", nav: "articles", title: "Image SEO: File Size, Names and Alt Text That Rank — ImageCompressorHub" },
+        "/why-large-images-slow-down-websites": { page: "page-why-large-images-slow-down-websites", nav: "articles", title: "Why Large Images Slow Down Your Website — ImageCompressorHub" },
+        "/image-sizes-for-social-media": { page: "page-image-sizes-for-social-media", nav: "articles", title: "Best Image Sizes for Social Media — ImageCompressorHub" },
+        "/dpi-and-resolution-explained": { page: "page-dpi-and-resolution-explained", nav: "articles", title: "Image DPI and Resolution Explained Simply — ImageCompressorHub" },
+        "/compress-screenshots": { page: "page-compress-screenshots", nav: "articles", title: "How to Compress Screenshots Without Making Text Blurry — ImageCompressorHub" },
+        "/product-photos-for-online-shop": { page: "page-product-photos-for-online-shop", nav: "articles", title: "Preparing Product Photos for an Online Shop — ImageCompressorHub" },
+        "/shrink-photos-for-email": { page: "page-shrink-photos-for-email", nav: "articles", title: "Email Attachment Size Limits: How to Shrink Photos for Email — ImageCompressorHub" },
+        "/avif-vs-webp": { page: "page-avif-vs-webp", nav: "articles", title: "AVIF vs WebP: The Next Generation of Image Formats — ImageCompressorHub" },
+        "/exif-metadata-and-privacy": { page: "page-exif-metadata-and-privacy", nav: "articles", title: "Image Metadata (EXIF): What Your Photos Reveal and How to Remove It — ImageCompressorHub" },
+        "/batch-compress-photos": { page: "page-batch-compress-photos", nav: "articles", title: "How to Batch-Compress Many Photos at Once — ImageCompressorHub" },
+        "/fix-file-too-large-upload-errors": { page: "page-fix-file-too-large-upload-errors", nav: "articles", title: "Fixing 'File Too Large' Upload Errors — ImageCompressorHub" },
+        "/image-compression-and-core-web-vitals": { page: "page-image-compression-and-core-web-vitals", nav: "articles", title: "Image Compression and Core Web Vitals: Passing the LCP Test — ImageCompressorHub" },
+        "/transparent-backgrounds-and-png-size": { page: "page-transparent-backgrounds-and-png-size", nav: "articles", title: "Transparent Backgrounds: Why PNG Files Get So Big and What to Do — ImageCompressorHub" },
+        "/how-much-quality-loss-is-acceptable": { page: "page-how-much-quality-loss-is-acceptable", nav: "articles", title: "How Much Quality Loss Is Acceptable? The 80–85% Quality Rule Explained — ImageCompressorHub" },
+        "/gif-alternatives": { page: "page-gif-alternatives", nav: "articles", title: "Why GIFs Are So Heavy — and the Smaller Alternatives — ImageCompressorHub" },
+        "/resize-vs-compress": { page: "page-resize-vs-compress", nav: "articles", title: "Resize vs Compress: What Is the Difference and Which Do You Need? — ImageCompressorHub" },
         "/about":       { page: "page-about", nav: "about", title: "About — ImageCompressorHub" },
         "/contact":     { page: "page-contact", nav: "contact", title: "Contact — ImageCompressorHub" },
         "/privacy":     { page: "page-privacy", nav: "", title: "Privacy Policy — ImageCompressorHub" },
