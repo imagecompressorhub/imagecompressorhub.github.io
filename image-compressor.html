@@ -1,0 +1,1242 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="light dark" />
+    <link rel="icon" href="data:," />
+    <title>ImageCompressorHub — Free Online Image Compressor (JPG, PNG, WebP)</title>
+    <meta name="description" content="Compress JPG, PNG and WebP images free in your browser. Images never leave your device — no upload, no sign-up. Adjust quality, resize, and download smaller images in seconds." />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://imagecompressorhub.github.io/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="ImageCompressorHub" />
+    <meta property="og:title" content="ImageCompressorHub — Free Online Image Compressor" />
+    <meta property="og:description" content="Compress JPG, PNG and WebP images free in your browser. Images never leave your device — no upload, no sign-up. Adjust quality, resize, and download smaller images in seconds." />
+    <meta property="og:url" content="https://imagecompressorhub.github.io/" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="ImageCompressorHub — Free Online Image Compressor" />
+    <meta name="twitter:description" content="Compress JPG, PNG and WebP images free in your browser. Images never leave your device. Adjust quality, resize, and download smaller images in seconds." />
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebSite",
+          "name": "ImageCompressorHub",
+          "url": "https://imagecompressorhub.github.io/"
+        },
+        {
+          "@type": "WebApplication",
+          "name": "ImageCompressorHub",
+          "url": "https://imagecompressorhub.github.io/",
+          "applicationCategory": "MultimediaApplication",
+          "operatingSystem": "Any (web browser)",
+          "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+          "description": "Free online image compressor that shrinks JPG, PNG and WebP images entirely in the visitor's browser using the Canvas API. Images are never uploaded to a server.",
+          "featureList": "Drag and drop image compression, quality control, max width and height resizing, batch processing, before and after file size comparison, individual and bulk downloads"
+        },
+        {
+          "@type": "FAQPage",
+          "mainEntity": [
+            { "@type": "Question", "name": "Is ImageCompressorHub really free?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. The compressor is completely free to use, with no sign-up, no watermarks and no limit on the number of images you can process. Because all compression happens in your own browser, there are no server costs to pass on to you." } },
+            { "@type": "Question", "name": "Are my images uploaded to a server?", "acceptedAnswer": { "@type": "Answer", "text": "No. Your images are processed locally on your device using your browser's built-in Canvas technology. The files never leave your computer or phone, and nothing is stored, copied or transmitted anywhere." } },
+            { "@type": "Question", "name": "Which image formats can I compress?", "acceptedAnswer": { "@type": "Answer", "text": "You can add JPG (JPEG), PNG and WebP images. You can keep each image in its original format or convert the output to JPEG or WebP, which usually produces the smallest files for photographs." } },
+            { "@type": "Question", "name": "What quality setting should I use?", "acceptedAnswer": { "@type": "Answer", "text": "A quality setting between 75 and 85 is the sweet spot for most photographs: files shrink dramatically while the difference is hard to see. Use 85–95 when image quality matters most, and 50–70 when the smallest possible file matters more than fine detail." } },
+            { "@type": "Question", "name": "Why did my compressed image come out larger than the original?", "acceptedAnswer": { "@type": "Answer", "text": "This can happen when the original was already heavily compressed, or when you convert a small JPEG to PNG, because PNG is a lossless format that stores every pixel. Try lowering the quality slider or choosing JPEG or WebP as the output format instead." } },
+            { "@type": "Question", "name": "Can I compress many images at once?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Drag in as many images as you like or select multiple files at once. Each image is compressed with the same settings, and you can download them one by one or use the Download All button." } },
+            { "@type": "Question", "name": "Does resizing an image reduce its file size?", "acceptedAnswer": { "@type": "Answer", "text": "Yes — resizing is often the single most effective way to shrink a file. A photo that is 4000 pixels wide contains far more data than a web page needs. Setting a sensible maximum width or height, such as 1600 pixels, can cut file size by more than half before quality settings are even applied." } },
+            { "@type": "Question", "name": "Will compression remove the EXIF data from my photos?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. When an image is redrawn in the browser, metadata such as camera model, GPS location and timestamps is not carried over to the new file. Many people see this as a privacy bonus when sharing photos online." } },
+            { "@type": "Question", "name": "Does the tool work on phones and tablets?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. The compressor runs in any modern mobile or desktop browser, including Chrome, Safari, Firefox and Edge. On a phone you can pick photos straight from your photo library." } },
+            { "@type": "Question", "name": "What is the maximum file size I can compress?", "acceptedAnswer": { "@type": "Answer", "text": "There is no fixed limit set by the site, because processing happens on your device. Very large images (for example above 50 MB or extremely high resolutions) depend on your device's memory, and older phones may struggle with several huge photos at once." } }
+          ]
+        }
+      ]
+    }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+    <style>
+      :root {
+        --bg: #f4f7f7;
+        --surface: #ffffff;
+        --surface-2: #eaf1f0;
+        --ink: #16242a;
+        --ink-soft: #47606a;
+        --line: #d5e0de;
+        --accent: #0b7263;
+        --accent-strong: #095a4e;
+        --accent-soft: #dff0ec;
+        --warn-bg: #fdf3e3;
+        --warn-ink: #7a5410;
+        --warn-line: #ecd9ac;
+        --good: #0b7263;
+        --bad: #b3402e;
+        --shadow: 0 1px 2px rgba(18, 38, 44, .06), 0 8px 24px rgba(18, 38, 44, .06);
+        --radius: 14px;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --bg: #0e1518;
+          --surface: #172227;
+          --surface-2: #1e2d33;
+          --ink: #e9f2f1;
+          --ink-soft: #a7bcc2;
+          --line: #2c4048;
+          --accent: #35c3ab;
+          --accent-strong: #5fd6c1;
+          --accent-soft: #173b35;
+          --warn-bg: #3a2f16;
+          --warn-ink: #f0d48a;
+          --warn-line: #6b5a26;
+          --good: #35c3ab;
+          --bad: #ff8d76;
+          --shadow: 0 1px 2px rgba(0,0,0,.35), 0 8px 24px rgba(0,0,0,.3);
+        }
+      }
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
+      body {
+        margin: 0;
+        font-family: "Public Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        background: var(--bg);
+        color: var(--ink);
+        line-height: 1.6;
+        -webkit-font-smoothing: antialiased;
+      }
+      button, [role="button"], select, summary, input:not([type="checkbox"], [type="radio"]) { min-height: 2.25rem; }
+      a { color: var(--accent); }
+      a:hover { color: var(--accent-strong); }
+      .wrap { max-width: 1080px; margin: 0 auto; padding: 0 20px; }
+
+      /* ---------- Header / nav ---------- */
+      header.site {
+        background: var(--surface);
+        border-bottom: 1px solid var(--line);
+        position: sticky; top: 0; z-index: 50;
+      }
+      .nav {
+        display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+        padding-top: 10px; padding-bottom: 10px;
+      }
+      .brand {
+        font-weight: 800; font-size: 1.12rem; letter-spacing: -.01em;
+        color: var(--ink); text-decoration: none; margin-right: auto;
+        display: inline-flex; align-items: center; gap: 9px; min-height: 2.25rem;
+      }
+      .brand .mark {
+        width: 30px; height: 30px; border-radius: 8px; flex: none;
+        background: var(--accent); color: #fff;
+        display: inline-flex; align-items: center; justify-content: center;
+      }
+      .brand .mark svg { width: 18px; height: 18px; }
+      nav.main { display: flex; flex-wrap: wrap; gap: 2px; }
+      nav.main a {
+        color: var(--ink-soft); text-decoration: none; font-weight: 600; font-size: .95rem;
+        padding: 8px 12px; border-radius: 9px; display: inline-flex; align-items: center; min-height: 2.25rem;
+      }
+      nav.main a:hover { color: var(--ink); background: var(--surface-2); }
+      nav.main a.active { color: var(--accent-strong); background: var(--accent-soft); }
+
+      main { padding: 34px 0 10px; }
+      .page { display: none; }
+      .page.current { display: block; }
+
+      /* ---------- Hero ---------- */
+      .hero { max-width: 760px; }
+      .hero h1 {
+        font-size: clamp(1.9rem, 4.6vw, 2.9rem); line-height: 1.12; letter-spacing: -.02em;
+        margin: 6px 0 12px; font-weight: 800;
+      }
+      .hero p.lede { font-size: 1.12rem; color: var(--ink-soft); margin: 0 0 8px; }
+      .privacy-note {
+        display: inline-flex; align-items: center; gap: 8px;
+        background: var(--accent-soft); color: var(--accent-strong);
+        font-weight: 600; font-size: .92rem; border-radius: 999px; padding: 7px 14px; margin-top: 10px;
+      }
+      .privacy-note svg { width: 16px; height: 16px; flex: none; }
+
+      /* ---------- Tool ---------- */
+      .tool {
+        background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
+        box-shadow: var(--shadow); padding: 22px; margin: 26px 0 8px;
+      }
+      .dropzone {
+        border: 2px dashed var(--line); border-radius: 12px; background: var(--surface-2);
+        padding: 38px 20px; text-align: center; cursor: pointer; transition: border-color .15s, background .15s;
+      }
+      .dropzone:hover, .dropzone:focus-visible { border-color: var(--accent); outline: none; }
+      .dropzone.dragging { border-color: var(--accent); background: var(--accent-soft); }
+      .dropzone svg { width: 44px; height: 44px; color: var(--accent); }
+      .dropzone .dz-title { font-size: 1.15rem; font-weight: 700; margin: 10px 0 4px; }
+      .dropzone .dz-sub { color: var(--ink-soft); font-size: .95rem; margin: 0; }
+      .dropzone .dz-sub strong { color: var(--accent-strong); }
+
+      .settings {
+        display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+        gap: 18px 22px; margin-top: 22px;
+      }
+      .field label { display: block; font-weight: 700; font-size: .92rem; margin-bottom: 7px; }
+      .field .hint { font-size: .83rem; color: var(--ink-soft); margin-top: 6px; }
+      .field select, .field input[type="number"] {
+        width: 100%; padding: 9px 11px; border: 1px solid var(--line); border-radius: 9px;
+        background: var(--surface); color: var(--ink); font: inherit; font-size: .97rem;
+      }
+      .quality-row { display: flex; align-items: center; gap: 12px; }
+      .quality-row input[type="range"] { flex: 1; accent-color: var(--accent); height: 2.25rem; }
+      .quality-val {
+        font-family: "IBM Plex Mono", ui-monospace, monospace; font-weight: 600; font-size: .95rem;
+        background: var(--surface-2); border: 1px solid var(--line); border-radius: 8px;
+        padding: 5px 10px; min-width: 58px; text-align: center;
+      }
+      .dim-row { display: flex; gap: 10px; }
+      .dim-row .dim { flex: 1; }
+      .dim-row .dim span { display: block; font-size: .8rem; color: var(--ink-soft); margin-bottom: 4px; font-weight: 600; }
+
+      .alert {
+        display: none; margin-top: 18px; border-radius: 10px; padding: 12px 15px;
+        background: var(--warn-bg); color: var(--warn-ink); border: 1px solid var(--warn-line);
+        font-size: .94rem;
+      }
+      .alert.show { display: block; }
+      .alert ul { margin: 6px 0 0; padding-left: 20px; }
+
+      .summary-bar {
+        display: none; align-items: center; gap: 14px; flex-wrap: wrap;
+        margin-top: 22px; padding: 14px 16px; border-radius: 11px;
+        background: var(--accent-soft); color: var(--accent-strong);
+      }
+      .summary-bar.show { display: flex; }
+      .summary-bar .totals { font-weight: 700; font-size: .98rem; }
+      .summary-bar .totals .mono { font-family: "IBM Plex Mono", ui-monospace, monospace; font-weight: 600; }
+
+      .btn {
+        appearance: none; border: 0; cursor: pointer; font: inherit; font-weight: 700;
+        border-radius: 10px; padding: 10px 18px; display: inline-flex; align-items: center; gap: 8px;
+        text-decoration: none; justify-content: center;
+      }
+      .btn-primary { background: var(--accent); color: #fff; }
+      .btn-primary:hover { background: var(--accent-strong); color: #fff; }
+      .btn-ghost { background: transparent; color: var(--ink-soft); border: 1px solid var(--line); }
+      .btn-ghost:hover { color: var(--ink); border-color: var(--ink-soft); }
+      .btn-small { padding: 7px 13px; font-size: .9rem; border-radius: 8px; }
+      .btn[disabled] { opacity: .55; cursor: default; }
+
+      .results { margin-top: 20px; display: grid; gap: 14px; }
+      .result-card {
+        display: flex; gap: 16px; border: 1px solid var(--line); border-radius: 12px;
+        padding: 14px; background: var(--surface); align-items: flex-start;
+      }
+      .result-card img.thumb {
+        width: 92px; height: 92px; object-fit: cover; border-radius: 9px; flex: none;
+        background: var(--surface-2); border: 1px solid var(--line);
+      }
+      .result-body { flex: 1; min-width: 0; }
+      .result-name { font-weight: 700; word-break: break-all; margin: 0 0 6px; font-size: .98rem; }
+      .stat-grid { display: flex; flex-wrap: wrap; gap: 6px 22px; font-size: .9rem; color: var(--ink-soft); }
+      .stat-grid .mono { font-family: "IBM Plex Mono", ui-monospace, monospace; color: var(--ink); font-weight: 500; }
+      .saved { font-weight: 800; }
+      .saved.good { color: var(--good); }
+      .saved.bad { color: var(--bad); }
+      .result-actions { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 10px; }
+      .processing { color: var(--ink-soft); font-style: italic; font-size: .92rem; }
+      @media (max-width: 560px) {
+        .result-card { flex-direction: column; }
+        .result-card img.thumb { width: 100%; height: 150px; }
+        .tool { padding: 16px; }
+      }
+
+      /* ---------- Sections / content ---------- */
+      section.block { margin: 46px 0 0; }
+      section.block > h2 { font-size: 1.55rem; letter-spacing: -.015em; margin: 0 0 8px; font-weight: 800; }
+      section.block > p.intro { color: var(--ink-soft); max-width: 720px; margin: 0 0 20px; }
+      .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 16px; }
+      .step {
+        background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 18px;
+      }
+      .step .num {
+        font-family: "IBM Plex Mono", ui-monospace, monospace; font-weight: 600; color: var(--accent);
+        font-size: .85rem; letter-spacing: .06em;
+      }
+      .step h3 { margin: 6px 0 6px; font-size: 1.05rem; }
+      .step p { margin: 0; color: var(--ink-soft); font-size: .95rem; }
+
+      .cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 18px; }
+      .card {
+        background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
+        padding: 22px; display: flex; flex-direction: column; box-shadow: var(--shadow);
+      }
+      .card .tag {
+        font-size: .78rem; font-weight: 700; letter-spacing: .07em; text-transform: uppercase;
+        color: var(--accent); margin-bottom: 8px;
+      }
+      .card h3 { margin: 0 0 8px; font-size: 1.14rem; line-height: 1.35; }
+      .card h3 a { color: var(--ink); text-decoration: none; }
+      .card h3 a:hover { color: var(--accent-strong); }
+      .card p { margin: 0 0 16px; color: var(--ink-soft); font-size: .95rem; flex: 1; }
+      .card .read { font-weight: 700; text-decoration: none; font-size: .93rem; }
+
+      .faq details {
+        background: var(--surface); border: 1px solid var(--line); border-radius: 11px;
+        padding: 4px 18px; margin-bottom: 10px;
+      }
+      .faq summary { font-weight: 700; cursor: pointer; padding: 10px 0; list-style: none; display: flex; justify-content: space-between; gap: 12px; align-items: center; }
+      .faq summary::-webkit-details-marker { display: none; }
+      .faq summary::after { content: "+"; font-size: 1.3rem; color: var(--accent); font-weight: 600; flex: none; }
+      .faq details[open ] summary::after { content: "–"; }
+      .faq details p { margin: 0 0 14px; color: var(--ink-soft); }
+
+      /* ---------- Article / prose pages ---------- */
+      .prose { max-width: 780px; }
+      .prose h1 { font-size: clamp(1.8rem, 4.4vw, 2.6rem); line-height: 1.15; letter-spacing: -.02em; margin: 4px 0 10px; font-weight: 800; }
+      .prose .standfirst { font-size: 1.1rem; color: var(--ink-soft); margin: 0 0 6px; }
+      .prose .meta-line { font-size: .88rem; color: var(--ink-soft); margin-bottom: 8px; }
+      .prose h2 { font-size: 1.4rem; letter-spacing: -.01em; margin: 34px 0 8px; font-weight: 800; }
+      .prose h3 { font-size: 1.12rem; margin: 24px 0 6px; }
+      .prose p { margin: 0 0 14px; }
+      .prose ul, .prose ol { margin: 0 0 14px; padding-left: 24px; }
+      .prose li { margin-bottom: 6px; }
+      .prose table { border-collapse: collapse; width: 100%; margin: 6px 0 18px; font-size: .95rem; }
+      @media (max-width: 560px) {
+        .prose table { font-size: .82rem; }
+        .prose th, .prose td { padding: 6px 7px; }
+      }
+      .prose th, .prose td { border: 1px solid var(--line); padding: 9px 12px; text-align: left; vertical-align: top; }
+      .prose th { background: var(--surface-2); }
+      .callout {
+        background: var(--accent-soft); border-radius: 11px; padding: 16px 18px; margin: 18px 0;
+      }
+      .callout p { margin: 0; }
+      .callout strong { color: var(--accent-strong); }
+      .backlink { display: inline-flex; align-items: center; min-height: 2.25rem; font-weight: 600; text-decoration: none; font-size: .95rem; }
+
+      footer.site {
+        border-top: 1px solid var(--line); margin-top: 60px; background: var(--surface);
+      }
+      .footer-grid {
+        display: flex; flex-wrap: wrap; gap: 26px 48px; padding: 30px 0 8px;
+      }
+      .footer-grid h4 { margin: 0 0 10px; font-size: .95rem; }
+      .footer-grid ul { list-style: none; margin: 0; padding: 0; }
+      .footer-grid li { margin-bottom: 4px; }
+      .footer-grid a { color: var(--ink-soft); text-decoration: none; font-size: .93rem; display: inline-flex; align-items: center; min-height: 2rem; }
+      .footer-grid a:hover { color: var(--accent-strong); }
+      .footer-about { max-width: 340px; color: var(--ink-soft); font-size: .93rem; }
+      .footer-about p { margin: 0; }
+      .copyright {
+        border-top: 1px solid var(--line); padding: 16px 0 22px; margin-top: 18px;
+        color: var(--ink-soft); font-size: .9rem; display: flex; flex-wrap: wrap; gap: 6px 20px; justify-content: space-between;
+      }
+      @media (prefers-reduced-motion: reduce) {
+        html { scroll-behavior: auto; }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="site">
+      <div class="wrap nav">
+        <a class="brand" href="#/">
+          <span class="mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3"/><path d="M21 8V5a2 2 0 0 0-2-2h-3"/><path d="M3 16v3a2 2 0 0 0 2 2h3"/><path d="M16 21h3a2 2 0 0 0 2-2v-3"/><path d="m9 9 6 6"/><path d="m15 9-6 6" opacity="0"/></svg></span>
+          ImageCompressorHub
+        </a>
+        <nav class="main" aria-label="Main navigation">
+          <a href="#/" data-nav="home">Compressor</a>
+          <a href="#/articles" data-nav="articles">Articles</a>
+          <a href="#/about" data-nav="about">About</a>
+          <a href="#/contact" data-nav="contact">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="wrap">
+
+      <!-- ==================== HOME ==================== -->
+      <div class="page" id="page-home">
+        <div class="hero">
+          <h1>Compress images without uploading them</h1>
+          <p class="lede">Shrink JPG, PNG and WebP files right here in your browser. Drag in a whole batch, pick a quality level, optionally cap the dimensions, and download crisp, lightweight images in seconds.</p>
+          <span class="privacy-note">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
+            100% private — your images never leave your device. No upload, no server, no sign-up.
+          </span>
+        </div>
+
+        <div class="tool" id="tool">
+          <div class="dropzone" id="dropzone" role="button" tabindex="0" aria-label="Add images to compress">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="9" cy="9" r="2"/><path d="m21 15-4.5-4.5L6 21"/></svg>
+            <p class="dz-title">Drop your images here</p>
+            <p class="dz-sub">or <strong>browse your files</strong> — JPG, PNG and WebP, as many as you like</p>
+          </div>
+          <input type="file" id="fileInput" accept="image/jpeg,image/png,image/webp,.jpg,.jpeg,.png,.webp" multiple hidden />
+
+          <div class="settings">
+            <div class="field">
+              <label for="quality">Quality — <span style="font-weight:500;color:var(--ink-soft)">smaller file vs. sharper image</span></label>
+              <div class="quality-row">
+                <input type="range" id="quality" min="10" max="100" step="1" value="80" aria-label="Compression quality" />
+                <span class="quality-val" id="qualityVal">80%</span>
+              </div>
+              <p class="hint">75–85% suits most photos. Quality applies to JPEG and WebP output; PNG is lossless, so use resizing to shrink PNGs.</p>
+            </div>
+            <div class="field">
+              <label for="format">Output format</label>
+              <select id="format">
+                <option value="original" selected>Keep original format</option>
+                <option value="image/jpeg">JPEG — best for photos</option>
+                <option value="image/webp">WebP — smallest for the web</option>
+                <option value="image/png">PNG — lossless, keeps transparency</option>
+              </select>
+              <p class="hint">Converting a photo from PNG to JPEG or WebP often saves the most space of all.</p>
+            </div>
+            <div class="field">
+              <label>Maximum size (optional)</label>
+              <div class="dim-row">
+                <div class="dim"><span>Max width (px)</span><input type="number" id="maxWidth" min="1" inputmode="numeric" placeholder="No limit" /></div>
+                <div class="dim"><span>Max height (px)</span><input type="number" id="maxHeight" min="1" inputmode="numeric" placeholder="No limit" /></div>
+              </div>
+              <p class="hint">Images larger than these limits are scaled down proportionally. They are never enlarged.</p>
+            </div>
+          </div>
+
+          <div class="alert" id="alertBox" role="alert"></div>
+
+          <div class="summary-bar" id="summaryBar">
+            <span class="totals" id="summaryText"></span>
+            <button class="btn btn-primary btn-small" id="downloadAllBtn" type="button">Download all</button>
+            <button class="btn btn-ghost btn-small" id="clearBtn" type="button">Clear list</button>
+          </div>
+
+          <div class="results" id="results" aria-live="polite"></div>
+        </div>
+
+        <section class="block">
+          <h2>How it works</h2>
+          <p class="intro">Three steps, all on your own device. The compression uses your browser's built-in Canvas technology — the same engine that draws web pages — so there is nothing to install and nothing to upload.</p>
+          <div class="steps">
+            <div class="step">
+              <span class="num">STEP 1</span>
+              <h3>Add your images</h3>
+              <p>Drag and drop JPG, PNG or WebP files onto the box above, or tap it to browse. You can add a whole batch at once and remove any file you change your mind about.</p>
+            </div>
+            <div class="step">
+              <span class="num">STEP 2</span>
+              <h3>Choose your settings</h3>
+              <p>Set the quality, pick an output format, and optionally cap the width and height. Every image in the list is re-compressed instantly whenever you change a setting.</p>
+            </div>
+            <div class="step">
+              <span class="num">STEP 3</span>
+              <h3>Compare and download</h3>
+              <p>See the before and after size, dimensions and percentage saved for every image. Download files one by one, or grab them all with a single click.</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="block">
+          <h2>Why smaller images matter</h2>
+          <p class="intro">Image files are usually the heaviest part of a web page, an email or a shared album. A phone photo can weigh 4–8 MB straight from the camera, yet most screens display it at a fraction of its original size. Compressing it first means pages load faster, uploads finish sooner, storage lasts longer, and visitors on slow connections are not left staring at a blank screen. The guides below explain the ideas behind the tool so you can make good choices for every image, not just the ones you compress here.</p>
+        </section>
+
+        <section class="block">
+          <h2>Guides and articles</h2>
+          <p class="intro">Practical, plain-English guides to image formats, compression and photo file sizes — written by us, for this site.</p>
+          <div class="cards" id="homeArticleCards"></div>
+          <p style="margin-top:18px"><a class="read" href="#/articles" style="font-weight:700;text-decoration:none">Browse all articles →</a></p>
+        </section>
+
+        <section class="block faq" id="faq">
+          <h2>Frequently asked questions</h2>
+          <p class="intro">Everything people usually ask before trusting a tool with their photos.</p>
+          <div id="faqList"></div>
+        </section>
+      </div>
+
+      <!-- ==================== ARTICLES INDEX ==================== -->
+      <div class="page" id="page-articles">
+        <div class="prose">
+          <h1>Articles</h1>
+          <p class="standfirst">Guides to understanding image compression, choosing the right format, shrinking photos on any device, and making images that help your pages rank.</p>
+        </div>
+        <div class="cards" id="articlesIndexCards" style="margin-top:26px"></div>
+      </div>
+
+      <!-- ==================== ARTICLE 1 ==================== -->
+      <div class="page" id="page-how-image-compression-works">
+        <article class="prose">
+          <a class="backlink" href="#/articles">← All articles</a>
+          <h1>How Image Compression Works: Lossy vs Lossless</h1>
+          <p class="standfirst">Every image you save is a compromise between file size and fidelity. Understanding the two families of compression — lossy and lossless — explains almost every choice you will ever make about image formats.</p>
+          <p class="meta-line">ImageCompressorHub Guides · About 6 minutes to read</p>
+
+          <h2>Why images need compressing at all</h2>
+          <p>A digital photograph is, at its core, a grid of pixels, and every pixel needs numbers to describe its colour. A modest 12-megapixel phone photo contains twelve million pixels. Stored completely raw, at three bytes per pixel, that is roughly 36 MB of data for a single picture — before you have taken a second one. Raw storage at that scale would fill phones in a weekend and bring web pages to a crawl.</p>
+          <p>Compression is the set of techniques that shrinks that data down to something practical: a typical phone photo lands between 2 and 6 MB, and a well-prepared web image can be under 200 KB. The trick is doing it without throwing away anything the eye would actually miss. That is where the two great families of compression come in.</p>
+
+          <h2>Lossless compression: smaller, but perfectly reversible</h2>
+          <p>Lossless compression reduces file size without discarding a single bit of image information. Decode a losslessly compressed file and you get back the exact pixels you started with, bit for bit. It works by finding and removing redundancy rather than detail.</p>
+          <p>The classic example is a run of identical pixels. A clear sky might contain a horizontal run of 800 pixels that are all the same shade of blue. Instead of storing that shade 800 times, a lossless encoder stores it once, along with the instruction "repeat 800 times." Real encoders such as the one inside PNG go further: they predict each pixel from its neighbours, store only the (usually tiny) prediction errors, and then compress those errors with general-purpose data compression. It is the same principle as a ZIP archive, tuned for images.</p>
+          <p>The catch is that photographs contain very little true redundancy — sensor noise alone makes neighbouring pixels differ slightly — so lossless compression of photos typically saves only 10–30%. For screenshots, logos, diagrams and text, where flat colours and sharp edges dominate, lossless is far more effective and, crucially, keeps edges perfectly crisp.</p>
+
+          <h2>Lossy compression: smaller still, by discarding what you won't miss</h2>
+          <p>Lossy compression takes a different bargain: it permanently throws away information, but chooses information the human visual system is poor at noticing. Done well, a lossy file can be ten times smaller than the lossless version while looking, at a glance, identical.</p>
+          <p>JPEG, the most famous lossy format, works roughly like this. The image is divided into 8×8 pixel blocks. Each block is converted from "brightness of each pixel" into "which patterns of gradual change are present," using a mathematical transform related to the ones used in audio compression. Human eyes are very sensitive to broad, gradual changes but poor at detecting fine, rapid detail — especially in colour rather than brightness. So the encoder keeps the broad patterns accurately and records the fine detail coarsely, or not at all. The quality setting you choose controls exactly how coarse that recording is.</p>
+          <p>At high quality settings, what gets discarded is mostly invisible. Push quality too low and the shortcuts become visible as the familiar artefacts of over-compression: blocky squares in skies, smeared edges, and mosquito-like noise around text and logos.</p>
+
+          <h2>The quality slider, explained</h2>
+          <p>When you move a quality slider from 100 down to 80, you are not removing "20% of the image." You are telling the encoder how aggressively it may approximate fine detail. The relationship is not linear: dropping from 100 to 90 often halves a photo's file size with no visible change, because at 100 the encoder was storing a great deal of detail nobody could see. Dropping from 50 to 30, by contrast, visibly damages most images. This is why the 75–85 range is the working sweet spot for photographs, and why re-compressing an already-compressed image again and again gradually degrades it — each save discards a little more.</p>
+
+          <h2>Which one should you choose?</h2>
+          <ul>
+            <li><strong>Photographs for the web or sharing:</strong> lossy, usually JPEG or WebP at 75–85 quality. The savings are enormous and the difference is invisible at normal viewing sizes.</li>
+            <li><strong>Logos, icons, screenshots and diagrams:</strong> lossless (PNG or lossless WebP). Sharp edges and flat colours are exactly what lossy handles worst and lossless handles best.</li>
+            <li><strong>Images you will edit again later:</strong> keep a lossless master copy. Edit from the master, and export a lossy copy for publishing. Never use a published, compressed copy as your new master.</li>
+            <li><strong>Anything with transparency:</strong> PNG or WebP, since classic JPEG cannot store an alpha channel at all.</li>
+          </ul>
+
+          <h2>Compression is not the whole story</h2>
+          <p>One final point that surprises many people: resizing usually beats compressing. A 4000-pixel-wide photo displayed in an 800-pixel-wide slot carries five times the data the screen can show. Scaling it down to a sensible size first, then compressing, routinely removes 80–95% of the original file weight. That is why our compressor puts the maximum width and height controls next to the quality slider — used together, they are the difference between a heavy page and a fast one.</p>
+
+          <div class="callout"><p><strong>Try it yourself:</strong> drop a photo into the <a href="#/">compressor</a> and move the quality slider from 100 down to 80. Watch the file size fall while the preview stays the same — that is lossy compression discarding detail you were never going to see.</p></div>
+        </article>
+      </div>
+
+      <!-- ==================== ARTICLE 2 ==================== -->
+      <div class="page" id="page-compress-images-for-websites">
+        <article class="prose">
+          <a class="backlink" href="#/articles">← All articles</a>
+          <h1>How to Compress Images for a Website Without Losing Quality</h1>
+          <p class="standfirst">"Without losing quality" really means "without losing quality anyone can see." Here is a practical workflow that makes web images dramatically lighter while keeping them visually indistinguishable from the originals.</p>
+          <p class="meta-line">ImageCompressorHub Guides · About 7 minutes to read</p>
+
+          <h2>Start with the real problem: oversized originals</h2>
+          <p>Most heavy web pages are not heavy because of bad compression. They are heavy because the images were never prepared for the web at all. A product photo exported from a camera or a design tool at 4000 pixels wide gets uploaded as-is, then displayed by the browser in a slot perhaps 800 pixels wide. The visitor downloads five times more data than their screen can display, on every visit, on every device. No compression setting can rescue that; the fix has to start with dimensions.</p>
+
+          <h2>Step 1: Resize to the size the image will actually be shown</h2>
+          <p>Work out the widest the image will ever appear on your site, in pixels, and resize to at most twice that width. The "twice" allows for high-density (Retina-style) screens, which pack two device pixels into each CSS pixel and genuinely do look sharper with the extra resolution. In practice:</p>
+          <ul>
+            <li><strong>Full-width hero images:</strong> 1600–1920 px wide is plenty for almost every layout.</li>
+            <li><strong>Blog and article images:</strong> 1200 px wide covers a generous content column at 2× density.</li>
+            <li><strong>Cards, listings and thumbnails:</strong> 600–800 px wide.</li>
+            <li><strong>Logos and icons:</strong> export at the display size, or use a vector format such as SVG where the design allows it.</li>
+          </ul>
+          <p>Resizing alone commonly removes 60–80% of a camera photo's weight, before any quality setting is touched.</p>
+
+          <h2>Step 2: Choose the format that fits the image</h2>
+          <p>Format choice is the second-biggest lever. Photographs belong in JPEG or WebP — WebP typically produces files 25–35% smaller than JPEG at the same visible quality, and every modern browser supports it. Graphics with flat colours, sharp edges or transparency belong in PNG or WebP. The most common mistake we see is a photograph saved as PNG: the same photo that is 250 KB as a JPEG can be 2 MB as a PNG, with no visible benefit whatsoever. Our <a href="#/jpg-vs-png-vs-webp">format comparison guide</a> walks through the decision in detail.</p>
+
+          <h2>Step 3: Set quality by eye, not by habit</h2>
+          <p>Export at quality 80 and look at the result at 100% zoom, on the kind of screen your visitors use. Check the areas that reveal compression first: gradients such as skies, faces, and any text or sharp logos inside the image. If it looks clean — and at 80 it almost always does for photographs — you can often go lower. Many sites run hero images at 70–75 with no complaints. Avoid the two extremes: quality 100 wastes bytes storing invisible detail, and anything under 55 risks visible blockiness on larger screens.</p>
+
+          <h2>Step 4: Compare file sizes and check the total page weight</h2>
+          <p>Judge the result by numbers as well as by eye. As working targets, aim for under 200 KB for large images and under 100 KB for ordinary content images, and keep the total image weight of a page under roughly 1 MB. When you compress here on ImageCompressorHub, the before-and-after sizes and percentage saved are shown for every file, so you can see immediately whether a setting change helped or hurt.</p>
+
+          <h2>Common mistakes that undo good compression</h2>
+          <ul>
+            <li><strong>Compressing twice.</strong> Re-saving an already-compressed JPEG at a lower quality compounds the damage. Always compress from the best original you have.</li>
+            <li><strong>Uploading the "web" image and the original.</strong> Some site builders quietly serve the original file anyway. After publishing, load the page and check the actual file size your visitors receive.</li>
+            <li><strong>Screenshots saved as JPEG.</strong> Text in screenshots turns fuzzy and noisy under JPEG. Use PNG for screenshots, then resize — they are usually light to begin with.</li>
+            <li><strong>Forgetting the images below the fold.</strong> Compress every image on the page, not just the hero. Lazy loading helps perceived speed, but the bytes still transfer eventually.</li>
+            <li><strong>Huge images inside PDFs and documents.</strong> If you publish downloads, prepare the images inside them the same way.</li>
+          </ul>
+
+          <h2>A quick routine worth adopting</h2>
+          <p>For every image you publish: resize to at most twice its display width, choose JPEG or WebP for photos and PNG for graphics, compress at quality 75–85, and glance at the result at full size. That four-step habit, applied consistently, is most of what separates fast sites from slow ones — and it takes under a minute per image once it becomes routine.</p>
+
+          <div class="callout"><p><strong>Put it into practice:</strong> the <a href="#/">ImageCompressorHub compressor</a> applies exactly this workflow — set a maximum width, pick WebP or JPEG, and use quality 80 as your starting point.</p></div>
+        </article>
+      </div>
+
+      <!-- ==================== ARTICLE 3 ==================== -->
+      <div class="page" id="page-jpg-vs-png-vs-webp">
+        <article class="prose">
+          <a class="backlink" href="#/articles">← All articles</a>
+          <h1>JPG vs PNG vs WebP: Which Format Should You Use?</h1>
+          <p class="standfirst">Three formats cover nearly every image on the web. They are not interchangeable — each was designed for a different job — and picking the right one is the easiest file-size win there is.</p>
+          <p class="meta-line">ImageCompressorHub Guides · About 6 minutes to read</p>
+
+          <h2>The short answer</h2>
+          <p>Photographs: WebP first, JPEG as the universal fallback. Graphics with transparency, screenshots, logos and text: PNG, or WebP where you control the whole pipeline. If you only remember one rule, make it this one — never save a photograph as PNG, and never save text or a logo as JPEG. Most of the benefit comes from avoiding those two mismatches.</p>
+
+          <h2>JPEG: the photograph standard</h2>
+          <p>JPEG (also written JPG) was designed in the early 1990s specifically for photographs, and its lossy compression is superb at them: smooth gradients, natural textures and millions of colours compress down to remarkably small files. Its weaknesses are equally specific. JPEG has no transparency support, and its block-based compression handles sharp edges badly — text, logos and line art develop fuzzy halos and speckled noise, and get worse with every re-save. JPEG also degrades generationally: each edit-and-save cycle discards a little more, so keep an untouched master of anything important.</p>
+
+          <h2>PNG: lossless and exact</h2>
+          <p>PNG is a lossless format: what you save is exactly what you get back, pixel for pixel. That makes it the right home for screenshots, interface graphics, diagrams, logos and anything with crisp edges or flat colour, and it supports full transparency, which is why it became the default for overlays and cut-out product shots. The price is size. A photograph contains almost none of the flat, repetitive content PNG compresses well, so a photo saved as PNG is commonly five to ten times larger than the same photo as a JPEG — with zero visible improvement. PNG also ignores quality sliders entirely; the only ways to shrink a PNG are resizing it or reducing its colour palette.</p>
+
+          <h2>WebP: the modern all-rounder</h2>
+          <p>WebP, developed by Google and now supported by every major browser, was designed to beat both older formats at their own games. Its lossy mode typically produces files 25–35% smaller than JPEG at equivalent visible quality, and its lossless mode is usually around a quarter smaller than PNG. Uniquely, it supports transparency in both modes — a transparent lossy WebP is something neither JPEG nor PNG can offer at all — and it can even store animation. The remaining caveats are about tooling rather than browsers: some older desktop software and a few content platforms still cannot open or accept WebP files, so keep a JPEG copy when you are handing images to other people or older systems.</p>
+
+          <h2>Side by side</h2>
+          <table>
+            <thead>
+              <tr><th>Feature</th><th>JPEG</th><th>PNG</th><th>WebP</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Compression</td><td>Lossy</td><td>Lossless</td><td>Lossy or lossless</td></tr>
+              <tr><td>Best for</td><td>Photographs</td><td>Screenshots, logos, diagrams</td><td>Photos and graphics for the web</td></tr>
+              <tr><td>Transparency</td><td>No</td><td>Yes</td><td>Yes</td></tr>
+              <tr><td>Animation</td><td>No</td><td>No (APNG is rarely supported)</td><td>Yes</td></tr>
+              <tr><td>Typical photo file size</td><td>Small</td><td>Very large</td><td>Smallest</td></tr>
+              <tr><td>Browser support</td><td>Universal</td><td>Universal</td><td>All modern browsers</td></tr>
+              <tr><td>Opens in older software</td><td>Yes</td><td>Yes</td><td>Not always</td></tr>
+            </tbody>
+          </table>
+
+          <h2>A decision checklist</h2>
+          <ol>
+            <li><strong>Is it a photograph?</strong> Use WebP for your own website; JPEG when the file must work absolutely everywhere.</li>
+            <li><strong>Does it need transparency?</strong> Use PNG for maximum compatibility, or WebP for a much smaller file on the web.</li>
+            <li><strong>Does it contain text, a logo or sharp lines?</strong> Use PNG (or lossless WebP). Never JPEG.</li>
+            <li><strong>Will you edit it again?</strong> Archive a PNG or the original camera file as your master, whatever you publish.</li>
+            <li><strong>Is it animated?</strong> Use WebP instead of an animated GIF — the same animation is usually a fraction of the size.</li>
+          </ol>
+
+          <h2>Converting is painless — and often the biggest win</h2>
+          <p>If your folders are full of photographs saved as PNG — a common result of screenshots-of-photos and default export settings — converting them is the single largest saving available to you, often 80–95% per file. In the <a href="#/">compressor</a>, add your images, choose JPEG or WebP as the output format, and compare the before-and-after sizes. For graphics that genuinely need to stay PNG, resize them to their display size instead; a 3000-pixel-wide logo shown at 300 pixels is carrying a hundred times the pixels it needs.</p>
+
+          <div class="callout"><p><strong>One exception to keep in mind:</strong> converting a JPEG photograph to PNG never improves it — it only makes the file bigger, because PNG faithfully preserves every artefact already in the JPEG. Convert from the best original you have, in the direction of the web, not backwards.</p></div>
+        </article>
+      </div>
+
+      <!-- ==================== ARTICLE 4 ==================== -->
+      <div class="page" id="page-reduce-photo-file-size">
+        <article class="prose">
+          <a class="backlink" href="#/articles">← All articles</a>
+          <h1>How to Reduce Photo File Size on Any Device</h1>
+          <p class="standfirst">Email refuses your attachment, a form rejects your upload, your phone storage is full — the fix is the same everywhere. Here is how to make photos smaller on Windows, Mac, Android and iPhone, and in the browser when you would rather not install anything.</p>
+          <p class="meta-line">ImageCompressorHub Guides · About 7 minutes to read</p>
+
+          <h2>First, understand what makes a photo big</h2>
+          <p>Three things decide a photo's file size: its dimensions in pixels, its format, and its compression quality. Modern phones shoot at 12 to 50 megapixels and save at generous quality settings, so a single photo of 4–8 MB is normal. Most of the places photos end up — a profile picture, a marketplace listing, a document, a chat message — display them at a small fraction of that. Reducing file size is mostly about matching the photo to its destination, and you rarely need to sacrifice anything visible to do it.</p>
+
+          <h2>The quickest route: compress in your browser</h2>
+          <p>On any device with a modern browser, you can skip installing software entirely. Open the <a href="#/">ImageCompressorHub compressor</a>, add your photos, and download the results. Because the processing happens on your device, it works the same on a phone as on a laptop, nothing is uploaded, and there are no accounts or watermarks. Two settings do nearly all the work:</p>
+          <ul>
+            <li><strong>Quality 80</strong> for general sharing — typically cuts a photo's size by 60–80% with no visible difference.</li>
+            <li><strong>A maximum width</strong> matched to the destination: 1600 px for sharing and viewing, 1024 px or less for documents, listings and uploads with size limits.</li>
+          </ul>
+          <p>If a form demands a photo under a specific size — say 200 KB for an application portal — start at quality 80 with a 1600 px cap, check the resulting size shown next to the file, and lower the quality or width a step at a time until you are under the limit.</p>
+
+          <h2>On iPhone and iPad</h2>
+          <p>The built-in trick is Mail: attach the photo to an email to yourself and iOS offers Small, Medium, Large and Actual Size options — Medium is usually a few hundred KB. For a permanent fix, the Shortcuts app can run a "Convert Image" action that resizes and re-saves photos at a chosen quality, and you can apply it to a whole selection at once. Also check Settings → Camera → Formats: "High Efficiency" (HEIC) photos are smaller on the phone but are rejected by many websites, so converting them to JPEG while compressing solves two problems at once.</p>
+
+          <h2>On Android</h2>
+          <p>Many gallery apps include an edit option to resize, and Google Photos offers a "Storage saver" mode that keeps slightly compressed copies. For one-off reductions, the browser route above is usually faster than hunting through menus, and it works identically on every Android brand. If you reduce photos often, look for the resize option inside your gallery's editor before reaching for a third-party app — and be cautious with free "photo resizer" apps, many of which exist mainly to show adverts and may upload your pictures to do their work.</p>
+
+          <h2>On Windows</h2>
+          <p>The Photos app can resize an opened image (look for "Resize image" in the menu), letting you pick dimensions and quality in one step. For batches, the free PowerToys add-on from Microsoft includes an Image Resizer that adds a right-click option to Explorer — select fifty photos, right-click, and produce web-sized copies of all of them. The classic Paint app also resizes by percentage or pixels, though it gives you less control over output quality.</p>
+
+          <h2>On Mac</h2>
+          <p>Preview, which every Mac already has, covers most needs: open the photo, use Tools → Adjust Size to set new dimensions, then File → Export and move the JPEG quality slider while watching the estimated file size update live at the bottom of the dialog. You can open many images in Preview at once and export them together with the same settings.</p>
+
+          <h2>Rules that apply on every device</h2>
+          <ul>
+            <li><strong>Keep your originals.</strong> Compression is one-way. Save compressed copies under a new name or in a "web" folder, and keep the camera originals untouched as your masters.</li>
+            <li><strong>Resize before you compress.</strong> Halving the dimensions quarters the pixel count — no quality slider can match that.</li>
+            <li><strong>Match the format to the destination.</strong> JPEG or WebP for photos; if a site refuses WebP, JPEG is accepted everywhere.</li>
+            <li><strong>Check the result at full size once.</strong> Zoom in on a face or a detailed area. If it looks clean there, it will look clean anywhere.</li>
+            <li><strong>Beware of messaging-app "help".</strong> Apps that auto-compress photos for sending also strip quality aggressively. When the photo matters, send the file you prepared yourself.</li>
+          </ul>
+
+          <div class="callout"><p><strong>Storage full right now?</strong> The biggest wins are usually videos, but photos are second. Compressing a library of 5 MB photos to well-prepared 500 KB copies frees roughly 90% of their space — just keep a backup of the originals somewhere first.</p></div>
+        </article>
+      </div>
+
+      <!-- ==================== ARTICLE 5 ==================== -->
+      <div class="page" id="page-image-seo-guide">
+        <article class="prose">
+          <a class="backlink" href="#/articles">← All articles</a>
+          <h1>Image SEO: File Size, Names and Alt Text That Rank</h1>
+          <p class="standfirst">Images can bring search traffic in their own right and quietly decide whether the page around them ranks at all. Three habits — light files, descriptive names and honest alt text — cover most of image SEO.</p>
+          <p class="meta-line">ImageCompressorHub Guides · About 7 minutes to read</p>
+
+          <h2>Why images affect rankings twice over</h2>
+          <p>Images influence search in two separate ways. First, they are content: image search is a significant source of visits for recipes, products, travel, tutorials and anything visual, and an image can also appear inside ordinary results, product panels and AI-generated answers. Second, images are weight: they are typically the largest files on a page, and page speed is a ranking input as well as a basic courtesy to visitors. An image strategy that ignores either side — beautiful but enormous, or tiny but meaningless to a search engine — leaves traffic on the table.</p>
+
+          <h2>File size: fast pages keep their rankings</h2>
+          <p>Search engines measure real loading experience, and the largest element on most pages is an image — very often the hero image that determines the page's Largest Contentful Paint score. Practical targets: hero images under 200 KB, ordinary content images under 100 KB, and a page's total image weight under about 1 MB. Reach them the way our <a href="#/compress-images-for-websites">website compression guide</a> describes: resize to display size (at most twice the display width for sharp screens), use WebP or JPEG for photographs, and compress at quality 75–85. Also set explicit width and height attributes on your image tags so the browser can reserve the right space before the file arrives — that prevents the layout jumps that hurt both readers and Core Web Vitals scores.</p>
+
+          <h2>File names: describe the picture, not the camera</h2>
+          <p>A file name is one of the few explicit labels an image carries, and search engines read it. "IMG_4021.jpg" says nothing; "chocolate-chip-cookies-tray.jpg" says a great deal. Good file names are:</p>
+          <ul>
+            <li><strong>Descriptive and specific</strong> — name the subject, and the detail that makes this image different from your others.</li>
+            <li><strong>Lowercase, with hyphens</strong> between words — spaces and underscores are handled inconsistently, and capitals invite duplicate-URL confusion.</li>
+            <li><strong>Honest</strong> — a name stuffed with unrelated popular keywords is spam, and search engines treat it that way. Describe what is actually in the picture.</li>
+            <li><strong>Set before upload</strong> — renaming after publishing changes the image's URL and throws away whatever equity it had built up.</li>
+          </ul>
+
+          <h2>Alt text: written for people, read by search engines</h2>
+          <p>Alt text exists first for accessibility: it is what a screen reader speaks aloud and what appears when an image fails to load. Search engines use it because it is usually the most accurate description of an image available to them. Write it as you would describe the photo to someone on the phone — a natural sentence, specific about the subject, usually under about 125 characters.</p>
+          <ul>
+            <li><strong>Good:</strong> "Golden retriever puppy chewing a stick on a beach" — specific, natural, complete.</li>
+            <li><strong>Weak:</strong> "dog" — true, but it wastes the opportunity and helps nobody.</li>
+            <li><strong>Spam:</strong> "dog puppy golden retriever puppies dogs for sale best puppies cheap" — keyword stuffing, penalised and useless to a screen-reader user.</li>
+            <li><strong>Decorative images</strong> — flourishes, dividers, background textures — should have empty alt text (alt="") so assistive technology skips them rather than reading out noise.</li>
+            <li><strong>Never</strong> start with "image of" or "picture of" — the reader and the search engine already know it is an image.</li>
+          </ul>
+
+          <h2>The supporting habits</h2>
+          <p><strong>Captions and surrounding text.</strong> The words nearest an image help search engines understand it. A relevant caption and a paragraph that genuinely discusses the picture do more than any hidden field.</p>
+          <p><strong>One image, one URL.</strong> Serve each image from a stable URL on your own domain, and include your important images in your sitemap (or an image sitemap) so they are discovered reliably.</p>
+          <p><strong>Structured data where it fits.</strong> Recipes, products and articles can carry schema that lets images appear in rich results with badges and context — worth adding for content types that support it.</p>
+          <p><strong>Do not hotlink or steal.</strong> Use images you own or are licensed to use. Aside from the legal exposure, an image you do not host can vanish or be replaced at any time.</p>
+
+          <h2>A pre-publish checklist</h2>
+          <ol>
+            <li>Resized to at most twice its display width.</li>
+            <li>Compressed — under 200 KB for heroes, under 100 KB for content images.</li>
+            <li>Right format: WebP or JPEG for photos, PNG for graphics and transparency.</li>
+            <li>File name describes the subject, lowercase with hyphens.</li>
+            <li>Alt text is a natural, specific sentence — or empty if the image is purely decorative.</li>
+            <li>Width and height attributes set, so the layout does not jump while loading.</li>
+          </ol>
+          <p>None of this is secret or technical. It is simply treating every image as a small piece of content that deserves the same care as a headline — prepared for readers first, labelled honestly, and light enough never to slow the page down.</p>
+
+          <div class="callout"><p><strong>Start with the weight:</strong> run your page's images through the <a href="#/">compressor</a> — resize, convert to WebP, quality 80 — then rename the downloads descriptively before you upload them.</p></div>
+        </article>
+      </div>
+
+      <!-- ==================== ABOUT ==================== -->
+      <div class="page" id="page-about">
+        <article class="prose">
+          <h1>About ImageCompressorHub</h1>
+          <p class="standfirst">A free image compressor built on a simple principle: your photos should never have to leave your device just to become smaller.</p>
+          <h2>What this site does</h2>
+          <p>ImageCompressorHub shrinks JPG, PNG and WebP images directly in your web browser. When you add a photo, your browser reads it, redraws it on an internal canvas at the size and quality you chose, and hands you back the smaller file. At no point is anything uploaded — there is no server receiving your images, no account to create, and nothing stored anywhere. When you close the tab, everything is gone.</p>
+          <h2>Why we built it this way</h2>
+          <p>Most online compressors work by uploading your images to their servers. That means waiting on your connection speed, trusting a stranger's company with your personal photos, and accepting limits designed around their hosting costs. Modern browsers are easily powerful enough to do this job locally, so we built the tool that way: faster, private by design rather than by promise, and free without catches because our costs are close to zero.</p>
+          <h2>Who it is for</h2>
+          <p>Website owners and bloggers making pages load faster, sellers preparing product photos for marketplaces, students and job applicants squeezing photos under upload limits, and anyone whose phone keeps warning that storage is full. The guides in our <a href="#/articles">articles section</a> explain the ideas behind the tool — formats, quality settings, resizing and image SEO — so you can make good decisions even when you are using other software.</p>
+          <h2>What it is not</h2>
+          <p>This is a compression tool, not a photo editor: it does not crop creatively, apply filters or retouch. It also cannot recover detail that is not in your original file — no compressor can. Keep your original photos backed up, and treat compressed files as copies made for a purpose.</p>
+          <h2>Get in touch</h2>
+          <p>Questions, corrections or suggestions are welcome at <a href="mailto:contact@imagecompressorhub.github.io">contact@imagecompressorhub.github.io</a>, or through the <a href="#/contact">contact page</a>.</p>
+        </article>
+      </div>
+
+      <!-- ==================== CONTACT ==================== -->
+      <div class="page" id="page-contact">
+        <article class="prose">
+          <h1>Contact us</h1>
+          <p class="standfirst">The fastest way to reach us is email. We read everything, and we reply to most messages within a couple of working days.</p>
+          <h2>Email</h2>
+          <p><strong><a href="mailto:contact@imagecompressorhub.github.io">contact@imagecompressorhub.github.io</a></strong></p>
+          <p>That address covers everything: problems with the compressor, questions about the guides, corrections, and suggestions for articles you would like us to write.</p>
+          <h2>Before you write about a compression problem</h2>
+          <p>A few details help us reproduce and fix issues quickly:</p>
+          <ul>
+            <li>The type of file you added (JPG, PNG or WebP) and roughly how large it was.</li>
+            <li>The settings you used — quality, output format, and any maximum width or height.</li>
+            <li>Your browser and device (for example, "Safari on iPhone" or "Chrome on Windows").</li>
+            <li>What you expected to happen, and what happened instead.</li>
+          </ul>
+          <p>Please do not email us the photos themselves. The compressor never sends images anywhere, and we do not need copies of your pictures to help — a description of the file is enough.</p>
+          <h2>Privacy questions</h2>
+          <p>For anything about how the site handles data, the short version is on the <a href="#/privacy">privacy policy</a> page: the tool processes images locally on your device and collects nothing about them.</p>
+        </article>
+      </div>
+
+      <!-- ==================== PRIVACY ==================== -->
+      <div class="page" id="page-privacy">
+        <article class="prose">
+          <h1>Privacy Policy</h1>
+          <p class="meta-line">Last updated: 2026</p>
+          <h2>The short version</h2>
+          <p>ImageCompressorHub compresses images entirely inside your browser. Your image files are never uploaded to us or to anyone else, never stored, and never seen by us. We cannot recover a file for you because we never had it.</p>
+          <h2>How the tool processes your images</h2>
+          <p>When you add an image, your browser reads the file from your device, processes it locally using built-in browser technology, and offers you the result as a download. The file data does not travel over the network. Closing or refreshing the page clears everything from memory. As a side effect of this process, embedded metadata in your photos (such as camera model and GPS location, known as EXIF data) is not carried into the compressed file.</p>
+          <h2>Information we collect</h2>
+          <p>We do not run accounts, and we do not ask for names, email addresses or any personal details to use the tool. Like almost every website, our hosting provider may keep standard server logs (such as pages requested, browser type and approximate region) for security and reliability; these logs never contain your image files, because your images are never sent to the server.</p>
+          <h2>Cookies and analytics</h2>
+          <p>The compressor itself works without cookies. If analytics or advertising services are used on this site in future, they will be described here, and they will never have access to the images you process, which remain on your device at all times.</p>
+          <h2>Third-party links</h2>
+          <p>Pages on this site may link to external websites. We are not responsible for the privacy practices of those sites, and we encourage you to read their policies.</p>
+          <h2>Your choices</h2>
+          <p>Because your images never leave your device, there is nothing held by us to access, correct or delete. For any other privacy question, contact us at <a href="mailto:contact@imagecompressorhub.github.io">contact@imagecompressorhub.github.io</a>.</p>
+          <h2>Changes to this policy</h2>
+          <p>If this policy changes, the updated version will be posted on this page with a revised date.</p>
+        </article>
+      </div>
+
+      <!-- ==================== TERMS ==================== -->
+      <div class="page" id="page-terms">
+        <article class="prose">
+          <h1>Terms of Use</h1>
+          <p class="meta-line">Last updated: 2026</p>
+          <h2>Using the tool</h2>
+          <p>ImageCompressorHub provides a free, browser-based image compression tool and related guides. By using this site you accept these terms. The tool is provided for compressing images that you own or have the right to modify.</p>
+          <h2>Your files and your responsibility</h2>
+          <p>Your images are processed locally on your device and are never transmitted to us. You are responsible for keeping your own backups of original files. Compression is irreversible: once you replace an original with a compressed copy, discarded detail cannot be restored by us or by the tool.</p>
+          <h2>Acceptable use</h2>
+          <p>You agree not to use this site to infringe anyone's copyright or other rights, to process unlawful material, or to attempt to disrupt the site's operation. The articles on this site are our original work; you may quote short excerpts with a link back, but you may not republish them in full without permission.</p>
+          <h2>No warranty</h2>
+          <p>The tool and content are provided "as is", without warranties of any kind. Compression results depend on your files, settings and device, and we do not guarantee any particular file size, quality level or outcome. To the fullest extent permitted by law, we are not liable for any loss of data or other damages arising from use of this site — one more reason to keep backups of your originals.</p>
+          <h2>Changes</h2>
+          <p>We may update the tool, the content or these terms at any time; the current version will always be posted on this page. Continued use of the site after a change means you accept the updated terms.</p>
+          <h2>Contact</h2>
+          <p>Questions about these terms: <a href="mailto:contact@imagecompressorhub.github.io">contact@imagecompressorhub.github.io</a>.</p>
+        </article>
+      </div>
+
+      <!-- ==================== DISCLAIMER ==================== -->
+      <div class="page" id="page-disclaimer">
+        <article class="prose">
+          <h1>Disclaimer</h1>
+          <p class="meta-line">Last updated: 2026</p>
+          <h2>General information</h2>
+          <p>The content on ImageCompressorHub — including the compression tool, guides and articles — is provided for general information and everyday use. While we work to keep it accurate and current, we make no guarantees that any particular result, file size or saving will be achieved with your images.</p>
+          <h2>Results vary</h2>
+          <p>Compression outcomes depend on the source image, its format, its dimensions and the settings chosen. The before-and-after figures shown by the tool are measured from your actual files on your device at the moment of compression; they are real measurements, not estimates, but they apply only to those files and settings.</p>
+          <h2>Keep your originals</h2>
+          <p>Lossy compression permanently discards image data. Always keep an untouched copy of important photographs. We are not responsible for files you overwrite or delete.</p>
+          <h2>External links and trademarks</h2>
+          <p>This site may reference third-party products, formats and services. All trademarks belong to their respective owners, and mentioning them does not imply endorsement. External sites are outside our control, and we are not responsible for their content or availability.</p>
+          <h2>Contact</h2>
+          <p>If you spot an error anywhere on the site, please tell us at <a href="mailto:contact@imagecompressorhub.github.io">contact@imagecompressorhub.github.io</a> and we will put it right.</p>
+        </article>
+      </div>
+
+    </main>
+
+    <footer class="site">
+      <div class="wrap">
+        <div class="footer-grid">
+          <div class="footer-about">
+            <h4>ImageCompressorHub</h4>
+            <p>A free image compressor that runs entirely in your browser. Your images never leave your device — no uploads, no accounts, no watermarks.</p>
+          </div>
+          <div>
+            <h4>Tool</h4>
+            <ul>
+              <li><a href="#/">Image Compressor</a></li>
+              <li><a href="#/articles">Articles</a></li>
+              <li><a href="#/" data-faq-link>FAQ</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4>Popular guides</h4>
+            <ul>
+              <li><a href="#/how-image-compression-works">Lossy vs Lossless</a></li>
+              <li><a href="#/jpg-vs-png-vs-webp">JPG vs PNG vs WebP</a></li>
+              <li><a href="#/image-seo-guide">Image SEO Guide</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4>Site</h4>
+            <ul>
+              <li><a href="#/about">About</a></li>
+              <li><a href="#/contact">Contact</a></li>
+              <li><a href="#/privacy">Privacy Policy</a></li>
+              <li><a href="#/terms">Terms of Use</a></li>
+              <li><a href="#/disclaimer">Disclaimer</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="copyright">
+          <span>© 2026 ImageCompressorHub</span>
+          <span>Images are processed locally in your browser and are never uploaded.</span>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      "use strict";
+
+      /* ================= Articles data ================= */
+      var ARTICLES = [
+        {
+          slug: "how-image-compression-works",
+          tag: "Explainer",
+          title: "How Image Compression Works: Lossy vs Lossless",
+          desc: "What a quality slider actually does, why PNG barely shrinks a photo, and how to choose between lossy and lossless for any image."
+        },
+        {
+          slug: "compress-images-for-websites",
+          tag: "Websites",
+          title: "How to Compress Images for a Website Without Losing Quality",
+          desc: "A practical workflow — resize first, pick the right format, set quality by eye — that makes pages dramatically lighter with no visible difference."
+        },
+        {
+          slug: "jpg-vs-png-vs-webp",
+          tag: "Formats",
+          title: "JPG vs PNG vs WebP: Which Format Should You Use?",
+          desc: "The three web formats compared side by side, with a simple checklist for picking the right one every time."
+        },
+        {
+          slug: "reduce-photo-file-size",
+          tag: "How-to",
+          title: "How to Reduce Photo File Size on Any Device",
+          desc: "Photos too big to email, upload or store? Step-by-step methods for iPhone, Android, Windows and Mac — plus the browser route that works everywhere."
+        },
+        {
+          slug: "image-seo-guide",
+          tag: "SEO",
+          title: "Image SEO: File Size, Names and Alt Text That Rank",
+          desc: "How image weight, file names and alt text influence search rankings, with a pre-publish checklist you can reuse for every image."
+        }
+      ];
+
+      function cardHTML(a) {
+        return '<article class="card"><div class="tag">' + a.tag + '</div>' +
+          '<h3><a href="#/' + a.slug + '">' + a.title + '</a></h3>' +
+          '<p>' + a.desc + '</p>' +
+          '<a class="read" href="#/' + a.slug + '">Read the guide →</a></article>';
+      }
+      var cardsHTML = ARTICLES.map(cardHTML).join("");
+      document.getElementById("homeArticleCards").innerHTML = cardsHTML;
+      document.getElementById("articlesIndexCards").innerHTML = cardsHTML;
+
+      /* ================= FAQ ================= */
+      var FAQS = [
+        ["Is ImageCompressorHub really free?", "Yes. The compressor is completely free to use, with no sign-up, no watermarks and no limit on the number of images you can process. Because all compression happens in your own browser, there are no server costs to pass on to you."],
+        ["Are my images uploaded to a server?", "No. Your images are processed locally on your device using your browser's built-in Canvas technology. The files never leave your computer or phone, and nothing is stored, copied or transmitted anywhere."],
+        ["Which image formats can I compress?", "You can add JPG (JPEG), PNG and WebP images. You can keep each image in its original format or convert the output to JPEG or WebP, which usually produces the smallest files for photographs."],
+        ["What quality setting should I use?", "A quality setting between 75 and 85 is the sweet spot for most photographs: files shrink dramatically while the difference is hard to see. Use 85–95 when image quality matters most, and 50–70 when the smallest possible file matters more than fine detail."],
+        ["Why did my compressed image come out larger than the original?", "This can happen when the original was already heavily compressed, or when you convert a small JPEG to PNG, because PNG is a lossless format that stores every pixel. Try lowering the quality slider or choosing JPEG or WebP as the output format instead."],
+        ["Can I compress many images at once?", "Yes. Drag in as many images as you like or select multiple files at once. Each image is compressed with the same settings, and you can download them one by one or use the Download All button."],
+        ["Does resizing an image reduce its file size?", "Yes — resizing is often the single most effective way to shrink a file. A photo that is 4000 pixels wide contains far more data than a web page needs. Setting a sensible maximum width or height, such as 1600 pixels, can cut file size by more than half before quality settings are even applied."],
+        ["Will compression remove the EXIF data from my photos?", "Yes. When an image is redrawn in the browser, metadata such as camera model, GPS location and timestamps is not carried over to the new file. Many people see this as a privacy bonus when sharing photos online."],
+        ["Does the tool work on phones and tablets?", "Yes. The compressor runs in any modern mobile or desktop browser, including Chrome, Safari, Firefox and Edge. On a phone you can pick photos straight from your photo library."],
+        ["What is the maximum file size I can compress?", "There is no fixed limit set by the site, because processing happens on your device. Very large images (for example above 50 MB or extremely high resolutions) depend on your device's memory, and older phones may struggle with several huge photos at once."]
+      ];
+      document.getElementById("faqList").innerHTML = FAQS.map(function (f) {
+        return "<details><summary>" + f[0] + "</summary><p>" + f[1] + "</p></details>";
+      }).join("");
+
+      /* ================= Router ================= */
+      var ROUTES = {
+        "/":            { page: "page-home", nav: "home", title: "ImageCompressorHub — Free Online Image Compressor (JPG, PNG, WebP)" },
+        "/articles":    { page: "page-articles", nav: "articles", title: "Articles — ImageCompressorHub" },
+        "/how-image-compression-works": { page: "page-how-image-compression-works", nav: "articles", title: "How Image Compression Works: Lossy vs Lossless — ImageCompressorHub" },
+        "/compress-images-for-websites": { page: "page-compress-images-for-websites", nav: "articles", title: "How to Compress Images for a Website Without Losing Quality — ImageCompressorHub" },
+        "/jpg-vs-png-vs-webp": { page: "page-jpg-vs-png-vs-webp", nav: "articles", title: "JPG vs PNG vs WebP: Which Format Should You Use? — ImageCompressorHub" },
+        "/reduce-photo-file-size": { page: "page-reduce-photo-file-size", nav: "articles", title: "How to Reduce Photo File Size on Any Device — ImageCompressorHub" },
+        "/image-seo-guide": { page: "page-image-seo-guide", nav: "articles", title: "Image SEO: File Size, Names and Alt Text That Rank — ImageCompressorHub" },
+        "/about":       { page: "page-about", nav: "about", title: "About — ImageCompressorHub" },
+        "/contact":     { page: "page-contact", nav: "contact", title: "Contact — ImageCompressorHub" },
+        "/privacy":     { page: "page-privacy", nav: "", title: "Privacy Policy — ImageCompressorHub" },
+        "/terms":       { page: "page-terms", nav: "", title: "Terms of Use — ImageCompressorHub" },
+        "/disclaimer":  { page: "page-disclaimer", nav: "", title: "Disclaimer — ImageCompressorHub" }
+      };
+      var scrollToFaqAfterRoute = false;
+
+      function currentRoute() {
+        var h = window.location.hash.replace(/^#/, "");
+        if (!h) return "/";
+        if (h.charAt(0) !== "/") return "/";
+        return ROUTES[h] ? h : "/";
+      }
+      function renderRoute() {
+        var key = currentRoute();
+        var route = ROUTES[key];
+        var pages = document.querySelectorAll(".page");
+        for (var i = 0; i < pages.length; i++) pages[i].classList.remove("current");
+        document.getElementById(route.page).classList.add("current");
+        document.title = route.title;
+        var links = document.querySelectorAll("nav.main a");
+        for (var j = 0; j < links.length; j++) {
+          links[j].classList.toggle("active", links[j].getAttribute("data-nav") === route.nav);
+        }
+        if (scrollToFaqAfterRoute && key === "/") {
+          scrollToFaqAfterRoute = false;
+          var faq = document.getElementById("faq");
+          if (faq) faq.scrollIntoView();
+        } else {
+          window.scrollTo(0, 0);
+        }
+      }
+      window.addEventListener("hashchange", renderRoute);
+
+      document.querySelector("[data-faq-link]").addEventListener("click", function (e) {
+        e.preventDefault();
+        if (currentRoute() === "/") {
+          document.getElementById("faq").scrollIntoView({ behavior: "smooth" });
+        } else {
+          scrollToFaqAfterRoute = true;
+          window.location.hash = "#/";
+        }
+      });
+
+      /* ================= Compressor ================= */
+      var SUPPORTED = { "image/jpeg": "jpg", "image/png": "png", "image/webp": "webp" };
+      var items = [];
+      var nextId = 1;
+
+      var dropzone = document.getElementById("dropzone");
+      var fileInput = document.getElementById("fileInput");
+      var resultsEl = document.getElementById("results");
+      var alertBox = document.getElementById("alertBox");
+      var summaryBar = document.getElementById("summaryBar");
+      var summaryText = document.getElementById("summaryText");
+      var qualityInput = document.getElementById("quality");
+      var qualityVal = document.getElementById("qualityVal");
+      var formatInput = document.getElementById("format");
+      var maxWidthInput = document.getElementById("maxWidth");
+      var maxHeightInput = document.getElementById("maxHeight");
+
+      function formatBytes(bytes) {
+        if (bytes === 0) return "0 B";
+        var units = ["B", "KB", "MB", "GB"];
+        var i = Math.min(Math.floor(Math.log(bytes) / Math.log(1024)), units.length - 1);
+        var val = bytes / Math.pow(1024, i);
+        return (i === 0 ? val.toFixed(0) : val.toFixed(val >= 100 ? 0 : 1)) + " " + units[i];
+      }
+      function escapeHTML(s) {
+        return s.replace(/[&<>"']/g, function (c) {
+          return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
+        });
+      }
+      function showErrors(messages) {
+        if (!messages.length) { alertBox.classList.remove("show"); alertBox.innerHTML = ""; return; }
+        alertBox.innerHTML = "<strong>Some files could not be added:</strong><ul>" +
+          messages.map(function (m) { return "<li>" + escapeHTML(m) + "</li>"; }).join("") + "</ul>" +
+          "<p style='margin:8px 0 0'>Only JPG, PNG and WebP images are supported.</p>";
+        alertBox.classList.add("show");
+      }
+      function detectType(file) {
+        if (SUPPORTED[file.type]) return file.type;
+        var m = /\.([a-z0-9]+)$/i.exec(file.name || "");
+        if (m) {
+          var ext = m[1].toLowerCase();
+          if (ext === "jpg" || ext === "jpeg") return "image/jpeg";
+          if (ext === "png") return "image/png";
+          if (ext === "webp") return "image/webp";
+        }
+        return null;
+      }
+
+      function settings() {
+        var mw = parseInt(maxWidthInput.value, 10);
+        var mh = parseInt(maxHeightInput.value, 10);
+        return {
+          quality: parseInt(qualityInput.value, 10) / 100,
+          format: formatInput.value,
+          maxW: (isFinite(mw) && mw > 0) ? mw : null,
+          maxH: (isFinite(mh) && mh > 0) ? mh : null
+        };
+      }
+
+      function targetSize(w, h, s) {
+        var scale = 1;
+        if (s.maxW && w > s.maxW) scale = Math.min(scale, s.maxW / w);
+        if (s.maxH && h > s.maxH) scale = Math.min(scale, s.maxH / h);
+        return { w: Math.max(1, Math.round(w * scale)), h: Math.max(1, Math.round(h * scale)) };
+      }
+
+      function processItem(item) {
+        var s = settings();
+        var size = targetSize(item.origW, item.origH, s);
+        item.outW = size.w; item.outH = size.h;
+        var canvas = document.createElement("canvas");
+        canvas.width = size.w; canvas.height = size.h;
+        var ctx = canvas.getContext("2d");
+        var outType = (s.format === "original") ? item.type : s.format;
+        if (outType === "image/jpeg") {
+          ctx.fillStyle = "#ffffff";
+          ctx.fillRect(0, 0, size.w, size.h);
+        }
+        ctx.drawImage(item.img, 0, 0, size.w, size.h);
+        var quality = (outType === "image/png") ? undefined : s.quality;
+        if (canvas.toBlob) {
+          canvas.toBlob(function (blob) {
+            if (!blob) { item.error = "Your browser could not encode this image."; renderItem(item); updateSummary(); return; }
+            finishItem(item, blob);
+          }, outType, quality);
+        } else {
+          try {
+            var dataUrl = canvas.toDataURL(outType, quality);
+            var parts = dataUrl.split(",");
+            var mime = /:(.*?);/.exec(parts[0])[1];
+            var bin = atob(parts[1]);
+            var arr = new Uint8Array(bin.length);
+            for (var i = 0; i < bin.length; i++) arr[i] = bin.charCodeAt(i);
+            finishItem(item, new Blob([arr], { type: mime }));
+          } catch (err) {
+            item.error = "Your browser could not encode this image.";
+            renderItem(item); updateSummary();
+          }
+        }
+      }
+
+      function finishItem(item, blob) {
+        if (item.outUrl) URL.revokeObjectURL(item.outUrl);
+        item.outBlob = blob;
+        item.outType = blob.type || item.type;
+        item.outUrl = URL.createObjectURL(blob);
+        item.error = null;
+        var ext = SUPPORTED[item.outType] || "jpg";
+        var base = item.name.replace(/\.[^.]+$/, "");
+        item.outName = base + "-compressed." + ext;
+        renderItem(item);
+        updateSummary();
+      }
+
+      function renderItem(item) {
+        var card = document.getElementById("result-" + item.id);
+        if (!card) return;
+        var body = card.querySelector(".result-body");
+        var statsHTML = '<p class="result-name">' + escapeHTML(item.name) + "</p>";
+        if (item.error) {
+          statsHTML += '<p class="processing">' + escapeHTML(item.error) + "</p>";
+        } else if (!item.outBlob) {
+          statsHTML += '<p class="processing">Compressing…</p>';
+        } else {
+          var diff = item.origSize - item.outBlob.size;
+          var pct = (diff / item.origSize) * 100;
+          var savedHTML;
+          if (diff > 0) savedHTML = '<span class="saved good">−' + pct.toFixed(1) + "% saved</span>";
+          else if (diff < 0) savedHTML = '<span class="saved bad">+' + Math.abs(pct).toFixed(1) + "% larger</span>";
+          else savedHTML = '<span class="saved">Same size</span>';
+          statsHTML += '<div class="stat-grid">' +
+            "<span>Original: <span class='mono'>" + formatBytes(item.origSize) + "</span> · <span class='mono'>" + item.origW + "×" + item.origH + "</span></span>" +
+            "<span>Compressed: <span class='mono'>" + formatBytes(item.outBlob.size) + "</span> · <span class='mono'>" + item.outW + "×" + item.outH + "</span></span>" +
+            savedHTML +
+            "</div>" +
+            '<div class="result-actions">' +
+            '<button class="btn btn-primary btn-small" type="button" data-action="download" data-id="' + item.id + '">Download</button>' +
+            '<button class="btn btn-ghost btn-small" type="button" data-action="remove" data-id="' + item.id + '">Remove</button>' +
+            "</div>";
+        }
+        body.innerHTML = statsHTML;
+      }
+
+      function addCard(item) {
+        var card = document.createElement("div");
+        card.className = "result-card";
+        card.id = "result-" + item.id;
+        card.innerHTML = '<img class="thumb" alt="Preview of ' + escapeHTML(item.name) + '" />' +
+          '<div class="result-body"></div>';
+        card.querySelector("img.thumb").src = item.thumbUrl;
+        resultsEl.appendChild(card);
+        renderItem(item);
+      }
+
+      function updateSummary() {
+        var done = items.filter(function (i) { return i.outBlob; });
+        if (!done.length) { summaryBar.classList.remove("show"); return; }
+        var origTotal = 0, outTotal = 0;
+        done.forEach(function (i) { origTotal += i.origSize; outTotal += i.outBlob.size; });
+        var diff = origTotal - outTotal;
+        var pct = origTotal ? (diff / origTotal) * 100 : 0;
+        var savedText = diff >= 0 ? (" — <span class='mono'>" + pct.toFixed(1) + "%</span> saved overall")
+                                   : (" — <span class='mono'>" + Math.abs(pct).toFixed(1) + "%</span> larger overall");
+        summaryText.innerHTML = done.length + (done.length === 1 ? " image" : " images") +
+          ": <span class='mono'>" + formatBytes(origTotal) + "</span> → <span class='mono'>" + formatBytes(outTotal) + "</span>" + savedText;
+        summaryBar.classList.add("show");
+      }
+
+      function addFiles(fileList) {
+        var errors = [];
+        var files = Array.prototype.slice.call(fileList || []);
+        files.forEach(function (file) {
+          var type = detectType(file);
+          if (!type) {
+            errors.push(file.name + " — unsupported file type.");
+            return;
+          }
+          var item = {
+            id: nextId++, file: file, name: file.name, type: type,
+            origSize: file.size, origW: 0, origH: 0,
+            thumbUrl: URL.createObjectURL(file),
+            img: null, outBlob: null, outUrl: null, outName: "", error: null
+          };
+          var img = new Image();
+          img.onload = function () {
+            item.img = img;
+            item.origW = img.naturalWidth;
+            item.origH = img.naturalHeight;
+            items.push(item);
+            addCard(item);
+            processItem(item);
+          };
+          img.onerror = function () {
+            URL.revokeObjectURL(item.thumbUrl);
+            errors.push(file.name + " — the file could not be read as an image (it may be corrupt).");
+            showErrors(errors);
+          };
+          img.src = item.thumbUrl;
+        });
+        showErrors(errors);
+      }
+
+      function reprocessAll() {
+        items.forEach(function (item) { if (item.img) processItem(item); });
+      }
+
+      function removeItem(id) {
+        var idx = items.findIndex(function (i) { return i.id === id; });
+        if (idx === -1) return;
+        var item = items[idx];
+        URL.revokeObjectURL(item.thumbUrl);
+        if (item.outUrl) URL.revokeObjectURL(item.outUrl);
+        items.splice(idx, 1);
+        var card = document.getElementById("result-" + id);
+        if (card) card.remove();
+        updateSummary();
+      }
+
+      function downloadItem(item) {
+        var a = document.createElement("a");
+        a.href = item.outUrl;
+        a.download = item.outName;
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+      }
+
+      /* ---- Tool events ---- */
+      dropzone.addEventListener("click", function () { fileInput.click(); });
+      dropzone.addEventListener("keydown", function (e) {
+        if (e.key === "Enter" || e.key === " ") { e.preventDefault(); fileInput.click(); }
+      });
+      fileInput.addEventListener("change", function () {
+        addFiles(fileInput.files);
+        fileInput.value = "";
+      });
+      ["dragenter", "dragover"].forEach(function (ev) {
+        dropzone.addEventListener(ev, function (e) { e.preventDefault(); dropzone.classList.add("dragging"); });
+      });
+      ["dragleave", "drop"].forEach(function (ev) {
+        dropzone.addEventListener(ev, function (e) { e.preventDefault(); dropzone.classList.remove("dragging"); });
+      });
+      dropzone.addEventListener("drop", function (e) {
+        if (e.dataTransfer) addFiles(e.dataTransfer.files);
+      });
+      document.addEventListener("dragover", function (e) { e.preventDefault(); });
+      document.addEventListener("drop", function (e) { e.preventDefault(); });
+
+      qualityInput.addEventListener("input", function () {
+        qualityVal.textContent = qualityInput.value + "%";
+        reprocessAll();
+      });
+      formatInput.addEventListener("change", reprocessAll);
+      maxWidthInput.addEventListener("change", reprocessAll);
+      maxHeightInput.addEventListener("change", reprocessAll);
+      maxWidthInput.addEventListener("input", reprocessAll);
+      maxHeightInput.addEventListener("input", reprocessAll);
+
+      resultsEl.addEventListener("click", function (e) {
+        var btn = e.target.closest("button[data-action]");
+        if (!btn) return;
+        var id = parseInt(btn.getAttribute("data-id"), 10);
+        var item = items.find(function (i) { return i.id === id; });
+        if (!item) return;
+        if (btn.getAttribute("data-action") === "download" && item.outBlob) downloadItem(item);
+        if (btn.getAttribute("data-action") === "remove") removeItem(id);
+      });
+
+      document.getElementById("downloadAllBtn").addEventListener("click", function () {
+        var done = items.filter(function (i) { return i.outBlob; });
+        done.forEach(function (item, n) {
+          setTimeout(function () { downloadItem(item); }, n * 400);
+        });
+      });
+      document.getElementById("clearBtn").addEventListener("click", function () {
+        items.slice().forEach(function (i) { removeItem(i.id); });
+        showErrors([]);
+      });
+
+      renderRoute();
+    </script>
+  </body>
+</html>
